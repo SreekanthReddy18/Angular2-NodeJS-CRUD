@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.consisint.acsele.document.DocumentHistoryImpl" table="STRP_LETTERHISTORY">
+        <id name="pk" column="LTH_ID" unsaved-value="null">
+            <generator class="assigned" /> <!-- long -->
+        </id>
+
+        <property name="user" column="USR_LOGIN" /> <!-- varchar -->
+        <property name="description" column="LTH_DESC" /> <!-- varchar -->
+        <property name="docPk" column="SDOC_ID" /> <!-- long -->
+        <property name="timestamp" column="LTH_TIMESTAMP" /> <!-- Date -->
+        <property name="documentName" column="LTH_DOCUMENTNAME" /> <!-- varchar -->
+
+
+        <joined-subclass name="com.consisint.acsele.reports.LetterHistoryPolicy"
+            table="STRP_POLICYLETTERHISTORY">
+
+            <key column="LTH_ID"/>
+
+            <property name="policyId" column="AGREGATEDPOLICYID"/>
+            <property name="policyNumber" column="PLTH_POLICYNUMBER"/>
+            <property name="eventName" column="PLTH_EVENTNAME"/>
+            <property name="operationId" column="OPK_ID"/>
+            <property name="movDate" column="PLTH_OPERATIONDATE"/>
+
+        </joined-subclass>
+
+        <joined-subclass name="com.consisint.acsele.reports.LetterHistoryClaim"
+            table="STRP_CLAIMLETTERHISTORY">
+
+            <key column="LTH_ID"/>
+
+            <property name="claimId" column="CLAIMID"/>
+            <property name="operationId" column="CPLTH_OP"/>
+            <property name="policyNumber" column="CPLTH_POLICYNUMBER"/>
+            <property name="claimNumber" column="CPLTH_CLAIMNUMBER"/>
+
+        </joined-subclass>
+
+
+    </class>
+
+    <query name="letterHistory.loadLetterHistoryPolicy">
+        <![CDATA[ from LetterHistoryPolicy lhp]]>
+    </query>
+
+    <query name="letterHistory.loadLetterHistoryClaim">
+        <![CDATA[ from LetterHistoryClaim lhc]]>
+    </query>
+
+    <query name="letterHistory.loadLetterHistoryClaim.ByClaimId">
+        <![CDATA[ from LetterHistoryClaim lhc WHERE lhc.claimId = :claimId]]>
+    </query>
+
+    <query name="letterHistory.loadLetterHistoryDocument.ByLetterId.CRM">
+        <![CDATA[ from DocumentHistoryImpl lhc WHERE lhc.docPk = :docPk order by lhc.pk desc
+]]>
+    </query>
+
+    <query name="letterHistory.searchLetterHistoryPolicy">
+        <![CDATA[ FROM LetterHistoryPolicy lhp
+        WHERE lhp.movDate  BETWEEN DECODE(:fromDate, NULL, lhp.movDate, :fromDate)
+        AND DECODE(:toDate, NULL,lhp.movDate, :toDate)
+        AND lhp.policyId = DECODE(:policyId, NULL, lhp.policyId,:policyId)
+        AND lhp.eventName = DECODE(:nameEvent, NULL,lhp.eventName,:nameEvent) order by lhp.eventName, lhp.movDate  ]]>
+    </query>
+
+</hibernate-mapping>

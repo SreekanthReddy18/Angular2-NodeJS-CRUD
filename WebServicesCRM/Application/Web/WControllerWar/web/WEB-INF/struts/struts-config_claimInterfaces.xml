@@ -1,0 +1,1436 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- 2004-12-08 Nelson Crespo  -->
+<struts-config>
+    <form-beans>
+        <form-bean name="claimBenefitForm" type="com.consisint.acsele.workflow.claimInterfaces.forms.ClaimBenefitForm"/>
+        <form-bean name="claimBenefitDetailForm" type="com.consisint.acsele.claim.engine.ClaimBenefitDetailForm"/>
+        <form-bean name="editAffected"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.EditForm"/>
+        <form-bean name="claimPaymentDetailForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.ClaimPaymentDetailForm">
+            <form-property name="chkFranchise" type=""/>
+        </form-bean>
+        <form-bean name="coverageForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.CoverageForm"/>
+        <form-bean name="coverageConfigurationForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.CoverageConfigurationForm"/>
+        <form-bean name="claimsRequirementDefinitionForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.ClaimsRequirementDefinitionForm"/>
+        <form-bean name="correspondenceForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.ClaimsCorrespondenceForm"/>
+        <form-bean name="addCorrespondenceForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.AddCorrespondenceForm"/>
+        <form-bean name="letterMenuForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.LetterMenuForm"/>
+        <form-bean name="sendingcorrespondenceForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.ClaimCorrespondenceSendingForm"/>
+        <form-bean name="dataClaim" type="com.consisint.acsele.workflow.claimInterfaces.forms.DataClaimForm"/>
+        <form-bean name="ClaimInvoceHCMForm" type="com.consisint.acsele.claim.engine.ClaimInvoceHCMForm"/>
+        <form-bean name="ClaimInvoiceRefundForm" type="com.consisint.acsele.claim.engine.ClaimInvoiceRefundForm"/>
+        <form-bean name="BeneficiariesAndPercentageForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.BeneficiariesAndPercentageForm"/>
+        <form-bean name="ClaimFileUpload" type="com.consisint.acsele.claim.forms.ClaimDocumentFileForm"/>
+        <form-bean name="coveragePeriod"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.ClaimsCovPeriodForm"/>
+        <form-bean name="coverageFormRole"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.ClaimCoverageConcepRoleForm"/>
+        <form-bean name="questionnairesCoveragesForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.QuestionnairesCoveragesForm"/>
+
+        <form-bean name="openItemToDiscountForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.OpenItemToDiscountForm"/>
+
+        <form-bean name="coverageInvoiceForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.CoverageInvoiceForm"/>
+        <form-bean name="lettersGuaranteeForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.LettersGuaranteeForm"/>
+        <form-bean name="coverageInvoiceListForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.CoverageInvoiceListForm"/>
+        <form-bean name="lettersGuaranteeListForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.LettersGuaranteeListForm"/>
+        <form-bean name="claimBillsForm"
+                   type="com.consisint.acsele.workflow.claimInterfaces.forms.ClaimBillsForm"/>
+    </form-beans>
+
+    <global-forwards>
+        <forward name="securityExceptionPage" path="/WController/EJBAcsel-e/jsp/errorPage.jsp"/>
+    </global-forwards>
+
+    <!-- Action Mapping Definitions -->
+    <action-mappings>
+
+        <action path="/toModule" type="org.apache.struts.actions.SwitchAction"/>
+
+        <action path="/claimDeclaration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimDeclarationAction">
+            <forward name="loadTemplate" path="/claimDeclaration.jsp"/>
+            <forward name="claimTool" path="/toModule.do"/>
+        </action>
+
+        <action path="/saveDeclaration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SaveDeclarationAction">
+            <forward name="loadDeclaration" path="/claimDeclaration.do"/>
+            <forward name="loadClaimIndex" path="/buildStructClaim.do"/>
+        </action>
+
+        <action path="/rejectClaimDeclaration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.RejectClaimDeclarationAction">
+            <forward name="loadDeclaration" path="/claimDeclaration.do"/>
+        </action>
+
+        <action path="/loadDeclarationRejection"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadDeclarationRejectionAction">
+            <forward name="loadTemplate" path="/claimDeclaration.jsp"/>
+        </action>
+
+        <action path="/openClaim"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.OpenClaimAction">
+        </action>
+
+        <action path="/findAllClaims" type="com.consisint.acsele.workflow.claimInterfaces.actions.FindAllClaimsAction">
+            <forward name="success" path="/claims.jsp?command=loadClaim"/>
+            <forward name="findallclaims" path="/claims.jsp?command=loadRecovery"/>
+            <forward name="findClaimsWorkflow" path="/selectClaim.jsp"/>
+        </action>
+
+        <action path="/createClaim" type="com.consisint.acsele.workflow.claimInterfaces.actions.CreateClaimAction">
+            <forward name="error" path="/claimCreateError.jsp"/>
+            <forward name="success" path="/buildStructClaim.do"/>
+        </action>
+
+        <action path="/loadAllClaimFileStatus" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadAllClaimFileStatusAction">
+            <forward name="success" path="/loadAllClaimStatusHistory.jsp"/>
+            <forward name="all" path="/loadAllComponentsClaimHistory.jsp"/>
+            <forward name="loadOrdenPayment" path="/loadDetailsOrdenPayments.jsp"/>
+            <forward name="errorloadOrdenPayment" path="/claimCreateError.jsp"/>
+        </action>
+
+        <!-- Nueva ubicación de la venta de Sub-Estados de sinistro -->
+        <action path="/loadSubStateClaim" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadSubStateClaimAction">
+            <forward name="success" path="/subStateClaim.jsp"/>
+            <forward name="errorloadOrdenPayment" path="/claimCreateError.jsp"/>
+        </action>
+
+        <action path="/loadDetailMovementAndReserve" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadDetMovAndReserveAction">
+            <forward name="success" path="/policyObservation.jsp"/>
+        </action>
+
+        <action path="/loadDetailsClaim" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadAllDetailsClaimAction">
+            <forward name="error" path="/claimCreateError.jsp"/>
+            <forward name="success" path="/loadDetailsClaim.jsp"/>
+        </action>
+
+        <action path="/loadPolicyEvents" type="com.consisint.acsele.workflow.claimInterfaces.actions.ProcessPolicyEventsToClaimAction">
+            <forward name="success" path="/policyEventsToClaim.jsp"/>
+            <forward name="searchResult" path="/../EJBAcsel-e/jsp/searchresult.jsp"/>
+        </action>
+
+        <action path="/loadRiskUnitToClaim" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadRiskUnitToClaimAction">
+            <forward name="success" path="/selectRiskUnitToClaim.jsp"/>
+            <forward name="selectRiskUnitToClaim" path="/selectRiskUnitToClaim.jsp"/>
+            <forward name="processRiskUnitToClaim" path="/../EJBAcsel-e/jsp/searchresult.jsp"/>
+            <forward name="removeRiskUnitToClaim" path="/../EJBAcsel-e/jsp/searchresult.jsp"/>
+        </action>
+
+        <!--Action to load OpenItems asociated with claims -->
+        <action path="/loadUnpaidOpenItemsByClaim" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadUnpaidOpenItemsByClaimAction">
+            <forward name="success" path="/unpaidOpenItemByClaimList.jsp"/>
+        </action>
+
+
+
+        <!-- Action Create Claims Without Check Conditions Policy -->
+        <action path="/createClaimWithout" type="com.consisint.acsele.workflow.claimInterfaces.actions.CreateClaimWithoutCkeckAction">
+            <forward name="error" path="/claimCreateError.jsp"/>
+            <forward name="success" path="/buildStructClaim.do"/>
+        </action>
+
+        <!-- Action to Load structured of claim -->
+        <action path="/buildStructClaim" type="com.consisint.acsele.workflow.claimInterfaces.actions.BuildStructClaimAction"
+                name="dataClaim"
+                input="/securityError.jsp"
+                scope="session">
+            <forward name="error" path="/claimCreateError.jsp"/>
+            <forward name="success" path="/editAffectedObject.do?goTo=successLoad"/>
+            <forward name="createClaim" path="/index.jsp"/>
+        </action>
+
+        <!-- Action to Load the claim give-->
+        <action path="/loadClaim" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadClaimAction">
+            <forward name="error" path="/../EJBAcsel-e/jsp/searchresult.jsp"/>
+            <forward name="success" path="/buildStructClaim.do"/>
+            <forward name="loadDeclaration" path="/claimDeclaration.do"/>
+        </action>
+
+        <!-- Action to Export the claims loaded YLUCES (ACSELE-4874)-->
+        <action path="/exportClaims" type="com.consisint.acsele.workflow.claimInterfaces.actions.ExportClaimsAction">
+            <forward name="error" path="/../EJBAcsel-e/jsp/searchresult.jsp"/>
+            <forward name="success" path="/claims.jsp"/>
+
+        </action>
+
+        <!-- Action to Load the claim give-->
+        <action path="/showAssociateOpenClaims" type="com.consisint.acsele.workflow.claimInterfaces.actions.ShowAssociatedOpenClaimsForPolicyAction"
+                scope="session">
+            <forward name="error" path="/../EJBAcsel-e/jsp/searchresult.jsp"/>
+            <forward name="success" path="/showNonClosedClaimsForPolicy.jsp"/>
+        </action>
+
+        <!-- Action to Load the claim give-->
+        <action path="/loadClaimWorkflowAction" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadClaimWorkflowAction"
+                scope="session">
+            <forward name="error" path="/../EJBAcsel-e/jsp/searchresult.jsp"/>
+            <forward name="success" path="/buildStructClaim.do"/>
+        </action>
+
+        <!-- Action to Load Insurances Objects to Associate -->
+        <action path="/loadInsurances" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadInsurancesObjectsRUAction"
+                name="dataClaim"
+                input="/securityError.jsp"
+                scope="session">
+            <forward name="error" path="/index.jsp"/>
+            <forward name="success" path="/index.jsp?pageInc=addInsuranceObject.jsp"/>
+            <forward name="getEventTemplate" path="/getEventTypes.do"/>
+        </action>
+
+        <!-- Action to Load Coverages to Associate -->
+        <action path="/loadCoverages"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadCoveragesAction"
+                scope="request"
+                name="coverageForm">
+            <forward name="error" path="/buildStructClaim.do"/>
+            <forward name="success" path="/index.jsp?pageInc=addCoverages.jsp"/>
+        </action>
+
+        <action path="/loadDiseaseInformation"
+                type="com.consisint.acsele.claim.actions.LoadDiseaseInformationAction"
+                scope="request"
+                validate="false">
+            <forward name="forwardSubtitle"
+                     path="/diseaseSubtitlePanel.jsp"/>
+
+            <forward name="forwardDisease"
+                     path="/diseasePanel.jsp"/>
+
+            <forward name="forwardDiseaseName"
+                     path="/diseaseTypePanel.jsp"/>
+
+        </action>
+
+        <action path="/AssociationDiseaseToClaimNormalReserve"
+                type="com.consisint.acsele.claim.actions.AssociationDiseaseToClaimNormalReserveAction"
+                scope="request"
+                validate="false">
+            <forward name="forwardDisease"
+                     path="/diseaseList.jsp"/>
+        </action>
+
+        <action path="/addNormalReserve"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.AddNormalReserveAction"
+                scope="request"
+                name="coverageForm">
+            <forward name="loadAnalysis" path="/loadAnalysis.do?mode=insert"/>
+            <forward name="errorReserveLimit" path="/loadCoverages.do"/>
+            <forward name="errorPreviousClaim" path="/loadCoverages.do"/>
+            <forward name="errorCancelClaim" path="/loadCoverages.do"/>
+            <forward name="errorValidateBack" path="/editAffectedObject.do"/>
+            <forward name="error" path="/index.jsp"/>
+            <forward name="errorPeriod" path="/loadCoverages.do"/>
+            <forward name="changeReserveStatus" path="/changeNormalReserveStatus.do"/>
+        </action>
+
+        <action path="/loadReservesByConcept" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadReservesByConceptAction"
+                scope="session">
+            <forward name="error" path="/buildStructClaim.do"/>
+            <forward name="success" path="/index.jsp?pageInc=addReserveByConcept.jsp"/>
+        </action>
+
+        <!-- Action to get Events associate to Insurance Object Selected -->
+        <action path="/getEventTypes" type="com.consisint.acsele.workflow.claimInterfaces.actions.GetCauseTemplatesAction"
+                scope="session">
+            <forward name="error" path="/loadInsurances.do"/>
+            <forward name="success" path="/index.jsp?pageInc=addInsuranceObject.jsp"/>
+            <forward name="associateEventTemplate" path="/associate.do"/>
+
+        </action>
+
+        <!-- Action to Associate the Affected Object & Coverages Affecteds -->
+        <action path="/associate"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.AssociateAction"
+                name="coverageForm"
+                scope="request">
+            <forward name="error" path="/buildStructClaim.do"/>
+            <forward name="load" path="/editAffectedObject.do"/>
+            <forward name="success" path="/editAffectedObject.do"/>
+            <forward name="confirmRefuseClaim" path="/index.jsp?pageInc=confirmRefuseClaim.jsp"/>
+        </action>
+
+        <!-- Action to load the analysis template -->
+        <action path="/loadAnalysis"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadAnalysisAction"
+                scope="session">
+            <forward name="error" path="/index.jsp"/>
+            <forward name="loadTemplate" path="/index.jsp?pageInc=contextPageClaimTool.jsp?flagAnalysis=1" redirect="true"/>
+            <forward name="errorLoadingTemplate" path="/buildStructClaim.do" />
+        </action>
+
+        <action path="/changeNormalReserveStatus"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ChangeNormalReserveStatusAction"
+                scope="session">
+            <forward name="success" path="/buildStructClaim.do"/>
+            <forward name="loadRefuseReserve" path="/loadRefuseReserveTemplate.do"/>
+            <forward name="error" path="/index.jsp"/>
+            <forward name="loadAnalysis" path="/loadAnalysis.do?mode=insert"/>
+        </action>
+
+        <action path="/loadRefuseReserveTemplate"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadRefuseReserveTemplateAction"
+                scope="session">
+            <!--forward name="loadTemplate" path="/index.jsp?pageInc=contextPageClaimTool.jsp?flagAnalysis=1"/-->
+            <forward name="loadTemplate" path="/index.jsp?pageInc=refuseClaim.jsp?flagAnalysis=1"/>
+        </action>
+
+        <action path="/saveTemplate"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SaveTemplateAction"
+                scope="session">
+            <forward name="setAnalysisStatus" path="/changeNormalReserveStatus.do?status=0"/>
+            <forward name="setRefusalStatus" path="/changeNormalReserveStatus.do?status=2"/>
+
+        </action>
+
+        <!-- Action to Load the claim give-->
+        <action path="/desassociate" type="com.consisint.acsele.workflow.claimInterfaces.actions.DesassociateAction"
+                scope="session">
+            <forward name="error" path="/index.jsp"/>
+            <forward name="success" path="/buildStructClaim.do"/>
+        </action>
+
+        <!-- Action for nullifying reserves -->
+        <action path="/nullify" type="com.consisint.acsele.workflow.claimInterfaces.actions.FreeReserveAction"
+                scope="session">
+            <forward name="success" path="/buildStructClaim.do"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+
+        <!-- Action to Load Configurated Form of Claim -->
+        <action path="/editAffectedObject"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.EditClaimObjectAction"
+                name="editAffected"
+                scope="session">
+            <forward name="error" path="/getEventTypes.do"/>
+            <forward name="success" path="/index.jsp"/>
+        </action>
+
+
+        <!-- Action to edit claim -->
+        <action path="/edit"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.EditAction"
+                scope="session">
+            <forward name="error" path="/index.jsp"/>
+            <forward name="editReserve" path="/index.jsp?pageInc=editReserve.jsp"/>
+            <forward name="editStatistic" path="/index.jsp?pageInc=titlesbyplan.jsp"/>
+            <forward name="addRequisites" path="/index.jsp?pageInc=addRequisites.jsp"/>
+        </action>
+
+        <!-- Action to update data of Configurated Form -->
+        <action path="/updateAffectedObject"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.UpdateFormAction"
+                scope="session">
+            <forward name="error" path="/index.jsp"/>
+            <forward name="success" path="/buildStructClaim.do"/>
+            <forward name="updateReserve" path="/index.jsp?pageInc=editReserve.jsp"/>
+            <forward name="updateStatistic" path="/index.jsp?pageInc=titlesbyplan.jsp"/>
+        </action>
+
+        <!-- Action to load Payments Order of Claim -->
+        <action path="/loadPaymentsClaim"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadClaimPaymentsAction">
+            <forward name="error" path="/buildStructClaim.do"/>
+            <forward name="success" path="/index.jsp"/>
+            <forward name="errorMessage" path="/index.jsp"/>
+        </action>
+
+        <!-- Action to load Franchise deductable -->
+        <action path="/loadFranchise"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadFranchise">
+            <forward name="error" path="/buildStructClaim.do"/>
+            <forward name="success" path="/index.jsp"/>
+        </action>
+
+        <!-- Action to select Branch Offices -->
+        <action path="/loadBOPaymentsClaim"   scope="request"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadBranchOfficePaymentsAction">
+            <forward name="success" path="/ListBranchOffice.jsp"/>
+            <forward name="error" path="/ErrorClaimDocuments.jsp"/>
+        </action>
+
+        <!-- Action to create or edit Liquidated Movements -->
+        <action path="/editLiquidatedMovements"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadLiquidatedMovementsAction">
+            <forward name="error" path="/index.jsp?pageInc=generateClaimPayment.jsp"/>
+            <!--path="/ErrorClaimDocuments.jsp" contextRelative="false"/>-->
+            <forward name="success" path="/index.jsp?pageInc=generateClaimPayment.jsp"/>
+        </action>
+
+        <!-- Action to Update Payments Order of Claim -->
+        <action path="/updateClaimPayments"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.UpdateClaimPaymentAction"
+                scope="request">
+            <forward name="error" path="/loadPaymentsClaim.do"/>
+            <forward name="success"
+                     path="../ThirdParty/Search/ThirdPartySearchSelector.jsp?moduleCommand=claimAssociateThirdParty"
+                     contextRelative="true"
+                     redirect="true"/>
+            <forward name="showSearchThirparty"
+                     path="../ThirdParty/Search/ThirdPartySearchSelector.jsp?moduleCommand=thirdpartyMaintenance"
+                     contextRelative="true"
+                     redirect="true"/>
+            <forward name="showBeneficiarys" path="/index.jsp?pageInc=resultClaimThirdParty.jsp?op=1"/>
+            <forward name="showPolicyThirdParties" path="/index.jsp?pageInc=resultClaimThirdParty.jsp?op=2"/>
+            <forward name="showCoverageThirdParties" path="/index.jsp?pageInc=resultClaimThirdParty.jsp"/>
+            <forward name="showPreferentialThirdParties" path="/index.jsp?pageInc=resultClaimThirdParty.jsp"/>
+            <forward name="showInvoicesDetail" path="/index.jsp?pageInc=paymentsOrderInvoices.jsp"/>
+            <forward name="showInfo" path="/index.jsp?pageInc=generateClaimPayment.jsp"/>
+
+        </action>
+
+        <!-- Action to Print Documents of Payments Order of Claim -->
+        <action path="/printDocumentClaimPayments"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.PrintDocumentClaimPaymentsAction">
+            <forward name="success" path="/updateClaimPayments.do"/>
+        </action>
+
+        <!-- Action to Process Third Party Payments Order of Claim -->
+        <action path="/processThirdPartyToPaymentClaim"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ProcessThirdPartyToPaymentClaimAction"
+                scope="request">
+            <forward name="success" path="/index.jsp?pageInc=generateClaimPayment.jsp"/>
+            <forward name="benefitsuccess" path="/beneficiaryForPaymentsResult.jsp"/>
+            <forward name="error" path="/index.jsp?pageInc=generateClaimPayment.jsp"/>
+        </action>
+
+        <!-- Action to Load the Payments Order Detail -->
+        <action path="/loadClaimPaymentDetail"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadClaimPaymentDetailAction"
+                scope="request">
+            <forward name="success" path="/index.jsp?pageInc=claimPaymentDetail.jsp"/>
+            <forward name="updateDetail" path="/index.jsp?pageInc=generateClaimPayment.jsp"/>
+        </action>
+
+        <action path="/deleteClaimPayment"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.DeleteClaimPayment"
+                scope="request">
+            <forward name="success" path="/index.jsp?pageInc=generateClaimPayment.jsp"/>
+            <forward name="error" path="/index.jsp?pageInc=generateClaimPayment.jsp"/>
+        </action>
+
+        <!-- Action to Calculate the Values of the PaymentOrderDetail -->
+        <action path="/calculateClaimPaymentDetail"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.CalculateClaimPaymentDetailAction"
+                name="claimPaymentDetailForm"
+                scope="request"
+                validate="true"
+                input="/index.jsp?pageInc=claimPaymentDetail.jsp"
+                parameter="dispatch">
+            <forward name="success" path="/index.jsp?pageInc=claimPaymentDetail.jsp"/>
+            <forward name="error" path="/index.jsp?pageInc=claimPaymentDetail.jsp"/>
+            <forward name="submitDetail" path="/loadClaimPaymentDetail.do"/>
+        </action>
+
+        <action path="/processThirdPartyToPaymentClaimBenefit"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ProcessThirdPartyToPaymentClaimAction"
+                scope="request">
+            <forward name="success" path="/index.jsp?pageInc=claimPaymentDetail.jsp"/>
+            <forward name="error" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+        </action>
+
+        <!-- Action to Load the Payments Order Detail -->
+        <action path="/loadClaimInvoices"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.UpdatePaymentOrderInvoicesAction"
+                scope="session">
+            <forward name="success" path="/index.jsp?pageInc=paymentsOrderInvoices.jsp"/>
+            <forward name="loadInvoices" path="/index.jsp?pageInc=invoiceDetails.jsp"/>
+            <forward name="error" path="/loadClaimPaymentDetail.do"/>
+        </action>
+
+        <action path="/updateClaimInvoicesDetail"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.UpdateInvoiceDetailsAction"
+                scope="session">
+            <forward name="success" path="/index.jsp?pageInc=paymentsOrderInvoices.jsp"/>
+            <forward name="addInvoices" path="/index.jsp?pageInc=invoiceDetails.jsp"/>
+            <forward name="error" path="/loadClaimInvoices.do"/>
+        </action>
+
+        <!-- Action to Check Security in the Operation -->
+        <action path="/securityCheck"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SecurityCheckHandlerAction"
+                scope="session">
+            <forward name="success" path="/index.jsp?pageInc=claimAuthorizationCheck.jsp"/>
+            <forward name="error" path="/loadClaimPaymentDetail.do"/>
+        </action>
+
+        <action path="/totalize"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.AccountAction"
+                scope="session">
+            <forward name="success" path="/index.jsp?pageInc=totalizeclaim.jsp"/>
+        </action>
+
+        <action path="/applyPayments"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ApplyClaimPaymentAction"
+                scope="session">
+            <forward name="success" path="/index.jsp?pageInc=totalizeclaim.jsp"/>
+            <forward name="appliedOpenItems" path="/index.jsp?pageInc=totalizeclaim.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+
+        <action path="/reversePayments"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadReverseClaimPaymentAction"
+                scope="session">
+            <forward name="success" path="/index.jsp?pageInc=reverseclaimPaid.jsp"/>
+        </action>
+
+        <action path="/applyReversePayments"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ReverseClaimPaymentAction"
+                scope="session">
+            <forward name="success" path="/index.jsp?pageInc=reverseclaimPaid.jsp"/>
+            <forward name="error" path="/index.jsp?pageInc=reverseclaimPaid.jsp"/>
+        </action>
+
+
+        <action path="/loadReinsurance"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadReinsuranceClaimOperationsAction"
+                scope="session">
+            <forward name="success" path="/index.jsp?pageInc=reinsuranceClaimOperations.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+
+        <action path="/loadRIOperationDetails"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadRIClaimOperationDetailsAction"
+                scope="session">
+            <forward name="success" path="/index.jsp?pageInc=reinsuranceClaimOperationDetails.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+
+        <!-- Action to Deniew claim -->
+        <action path="/deniew"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.AssociateTemplateWithChangeStateAction"
+                scope="session">
+            <forward name="error" path="/index.jsp"/>
+            <forward name="success" path="/index.jsp?pageInc=refuseClaim.jsp?flagAnalysis=1"/>
+        </action>
+
+        <!-- Action to Change State of claim -->
+        <action path="/setState"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SetStateWithDataDCOAction"
+                scope="session">
+            <forward name="error" path="/index.jsp"/>
+            <forward name="success" path="/index.jsp?pageInc=confirmationChangeState.jsp"/>
+        </action>
+
+        <!-- Action to show data Policy of claim -->
+        <action path="/policyDataApply"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ShowPolicyDetailAction"
+                scope="request">
+            <forward name="success" path="/../resultPolicy/policyDataApply.jsp"/>
+        </action>
+
+        <!-- Action to show the Policy claims -->
+        <action path="/loadAllPolicyClaims"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadAllPolicyClaimsAction"
+                scope="request">
+            <forward name="success" path="/loadAllPolicyClaims.jsp"/>
+        </action>
+
+        <!-- Action to show the Policy claims -->
+        <action path="/loadAllPolicyClaims"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadAllPolicyClaimsAction"
+                scope="request">
+            <forward name="success" path="/loadAllPolicyClaims.jsp"/>
+        </action>
+
+        <!-- Action to show the Policy Premiums -->
+        <action path="/loadAllPolicyPremiums"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadAllPolicyPremiumsAction"
+                scope="request">
+            <forward name="success" path="/loadAllPolicyPremiums.jsp"/>
+        </action>
+
+        <!-- Action to update ocurrence Date of claim -->
+        <action path="/updateOcurrenceDate"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.UpdateOcurrenceDateAction"
+                scope="request">
+            <forward name="success" path="/changeOcurrenceDatePanel.jsp"/>
+            <forward name="error" path="/changeOcurrenceDatePanel.jsp"/>
+        </action>
+
+        <!-- Action to show data of Client Associate to policy -->
+        <action path="/loadParticipation"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadParticipationClaimAction"
+                scope="request">
+            <forward name="viewquotationrejected" path="/../UAAWebClient/search/viewquotationrejected.jsp"/>
+            <forward name="viewpolicypendingpayment" path="/../UAAWebClient/search/viewpolicypendingpayment.jsp"/>
+            <forward name="viewpolicycancelledbypaymentshortage" path="/../UAAWebClient/search/viewpolicycancelledbypaymentshortage.jsp"/>
+            <forward name="viewclaim" path="/../UAAWebClient/search/viewclaim.jsp"/>
+        </action>
+
+        <action path="/loadClaimByInsuredInsured"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadClaimByInsuredAction"
+                scope="request">
+            <forward name="viewClaimByInsured" path="/../UAAWebClient/search/viewClaimByInsured.jsp"/>
+        </action>
+
+        <!-- Action to show data Policy of claim -->
+        <action path="/checkRequisites"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.CheckRequisitesAction"
+                scope="request">
+            <forward name="success" path="/index.jsp?pageInc=requisites.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+
+        <action path="/addRequisites"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.RequisitesAction"
+                scope="request">
+            <forward name="success" path="/checkRequisites.do"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+
+        <action path="/updateRequisites"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.RequisitesAction"
+                scope="request">
+            <forward name="success" path="/buildStructClaim.do"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+
+        <action path="/updateAllRequisites"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.RequisitesAction"
+                scope="request">
+            <forward name="success" path="/index.jsp?pageInc=requisites.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+
+        <!-- Action to add comments -->
+        <action path="/addComment"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.AddCommentAction"
+                scope="session">
+            <forward name="error" path="/index.jsp" />
+            <forward name="success" path="/../WorkflowEnabledApps/WebBox/Internalcomments.jsp" />
+        </action>
+
+        <!-- Action to Coverage Configuration -->
+        <action path="/loadCoverageConfiguration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadCoverageConfigurationAction"
+                scope="request"
+                name="coverageConfigurationForm">
+            <forward name="claims" path="/ClaimsCoverageConfiguration.jsp"/>
+        </action>
+
+        <action path="/saveClaimCoverageConfiguration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SaveClaimCoverageConfigurationAction"
+                name="coverageConfigurationForm"
+                scope="request">
+            <forward name="claims" path="/ClaimsCoverageConfiguration.jsp" />
+        </action>
+
+        <!-- Action to Questionnaires of Coverage -->
+        <action path="/loadQuestionnairesCoverages"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadQuestionnairesCoveragesAction"
+                scope="request"
+                name="questionnairesCoveragesForm">
+            <forward name="questionnaires" path="/QuestionnairesCoverages.jsp"/>
+        </action>
+
+    <action path="/saveQuestionnairesCoverages"
+                         type="com.consisint.acsele.workflow.claimInterfaces.actions.SaveQuestionnairesCoveragesAction"
+                         scope="request"
+                         name="questionnairesCoveragesForm">
+        <forward name="success" path="/claimInterfaces/loadQuestionnairesCoverages.do"/>
+    </action>
+
+        <action path="/openItemsToDiscount"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.OpenItemsToDiscountAction"
+                scope="request"
+                name="openItemToDiscountForm">
+            <forward name="success" path="/openItemToDiscountList.jsp"/>
+        </action>
+
+
+        <action path="/calculateForFunction"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.CalculateForFunctionAction"
+                name="coverageConfigurationForm"
+                scope="request">
+            <forward name="claims" path="/ClaimsCoverageConfiguration.jsp" />
+        </action>
+
+        <action path="/requirementDefinition"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.RequirementDefinitionAction"
+                name="claimsRequirementDefinitionForm"
+                scope="request">
+            <forward name="requirement" path="/ClaimsRequirementDefinition.jsp" />
+        </action>
+
+        <action path="/addAndChangedRequirement"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.AddAndChangedRequirementAction"
+                name="claimsRequirementDefinitionForm"
+                scope="request">
+            <forward name="requirement" path="/requirementDefinition.do" />
+        </action>
+
+        <action path="/editRequirement"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.EditRequirementAction"
+                name="claimsRequirementDefinitionForm"
+                scope="request">
+            <forward name="requirement" path="/requirementDefinition.do" />
+        </action>
+
+        <action path="/claimsCorrespondenceConfiguration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimsCorrespondenceConfigurationAction"
+                name="correspondenceForm"
+                input="/securityError.jsp"
+                scope="session">
+            <forward name="correspondence" path="/ClaimsCorrespondenceConfiguration.jsp" />
+        </action>
+        <action path="/loadCorrespondenceConfiguration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadCorrespondenceAction"
+                scope="session">
+            <forward name="loadinitialcorrespondence" path="/ClaimHoldCorrespondenceConfiguration.jsp"/>
+            <forward name="failure" path="/EJBAcsel-e/jsp/reportError.jsp" contextRelative="true" />
+        </action>
+        <action path="/saveclaimsSendingCorrespondence"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SaveClaimsSendingCorrespondenceAction"
+                name="sendingcorrespondenceForm"
+                scope="request">
+            <forward name="savesendingcorrespondence" path="/claimResultSendingCorrespondence.jsp"/>
+            <forward name="failure" path="/ClaimHoldCorrespondenceConfiguration.jsp"/>
+        </action>
+        <action path="/loadFollowedLetters"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadCorrespondenceHistoryAction"
+                scope="request">
+            <forward name="loadFollowedletters" path="/FollowedLettersReport.jsp"/>
+            <forward name="failure" path="/EJBAcsel-e/jsp/reportError.jsp" contextRelative="true" />
+        </action>
+        <action path="/loadEventLetters"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.loadLettersForConfigurationAction"
+                scope="request">
+            <forward name="success" path="/AddGeneralCorrespondence.jsp"/>
+        </action>
+
+        <action path="/loadRolesLetters"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.loadLettersForConfigurationAction"
+                scope="request">
+            <forward name="success" path="/AddGeneralCorrespondence.jsp"/>
+        </action>
+        <action path="/loadGeneralLetters"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.loadLettersForConfigurationAction"
+                scope="request">
+            <forward name="success" path="/AddGeneralCorrespondence.jsp"/>
+        </action>
+
+        <action path="/updateCorrespondence"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.UpdateCorrespondenceAction"
+                name="addCorrespondenceForm"
+                validate="true"
+                scope="request">
+            <forward name="success" path="/AddGeneralCorrespondence.jsp"/>
+        </action>
+
+        <action path="/addGeneralCorrespondence"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.AddGeneralCorrespondenceAction"
+                name="correspondenceForm"
+                input="/securityError.jsp"
+                scope="session">
+            <forward name="correspondence" path="/ClaimsCorrespondenceConfiguration.jsp"/>
+        </action>
+
+        <action path="/saveCorrespondenceConfiguration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SaveClaimsCorrespondenceAction"
+                name="correspondenceForm"
+                input="/securityError.jsp"
+                scope="session">
+            <forward name="correspondence" path="/ClaimsCorrespondenceConfiguration.jsp"/>
+        </action>
+
+        <action path="/createCorrespondenceMenu"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.CreateCorrespondenceMenuAction"
+                scope="request">
+            <forward name="success" path="/menuCorrespondence.jsp"/>
+            <forward name="error" path="/correspondenceError.jsp"/>
+        </action>
+
+        <action path="/showLettersHistory"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadHistoryGeneratedLettersAction"
+                scope="request">
+            <forward name="success" path="/generationLettersHistory.jsp"/>
+        </action>
+
+        <action path="/generateCorrespondence"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.GenerateCorrespondenceAction"
+                name="letterMenuForm"
+                scope="request">
+                <forward name="success" path="/../letters/showPDF.jsp"/>
+                <forward name="error" path="/../EJBAcsel-e/jsp/reportError.jsp"/>
+        </action>
+
+        <action path="/loadBenefit"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadBenefitAction"
+                name="claimBenefitForm"
+                scope="session">
+            <forward name="error" path="/index.jsp" />
+            <forward name="loadBenefit" path="/index.jsp?pageInc=claimBenefit.jsp" />
+            <forward name="loadBenefitHCM" path="/index.jsp?pageInc=claimBenefitHCM.jsp" />
+            <forward name="benefitAndPaymentBlocked" path="/index.jsp?pageInc=claimBenefitandPaymentsBlocked.jsp" />
+            <forward name="loadHospitalIncomeBenefit" path="/loadHospitalIncomeBenefit.do?action=load" />
+        </action>
+
+        <action path="/loadHospitalIncomeBenefit"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.HospitalIncomeBenefitAction"
+                name="claimBenefitForm"
+                attribute="claimBenefitBean"
+                scope="session">
+            <forward name="loadBenefitTable" path="/index.jsp?pageInc=benefitTable.jsp" />
+        </action>
+
+        <action path="/loadTreatment"
+                type="com.consisint.acsele.claim.actions.LoadTreatmentAction"
+                scope="session">
+            <forward name="error" path="/index.jsp" />
+            <forward name="success" path="/index.jsp?pageInc=treatmentPanel.jsp" />
+            <forward name="successPanel" path="/treatmentAndDiseaseList.jsp" />
+        </action>
+        <action path="/searchTreatment"
+                type="com.consisint.acsele.claim.actions.SearchTreatmentAction"
+                scope="session">
+            <forward name="error" path="/treatmentAssociation.jsp" />
+            <forward name="success" path="/treatmentAssociation.jsp" />
+        </action>
+
+        <action path="/maintenanceClaimBenefitDetail"
+                type="com.consisint.acsele.hcm.view.maintenance.ClaimBenefitDetailMaintenanceAction"
+                name="claimBenefitDetailForm"
+                scope="request"
+                validate="false">
+            <forward name="success" path="/claimBenefitDetailPanel.jsp" contextRelative="false" />
+        </action>
+
+        <action path="/addBenefit"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.AddBenefitAction"
+                name="claimBenefitForm"
+                scope="session">
+            <forward name="loadBenefit" path="/index.jsp?pageInc=claimBenefit.jsp" />
+            <forward name="loadHospitalIncomeBenefit" path="/loadHospitalIncomeBenefit.do?action=load" />
+        </action>
+
+        <action path="/saveBenefit"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SaveBenefitsAction"
+                name="claimBenefitForm"
+                scope="session">
+            <forward name="loadBenefit" path="/index.jsp?pageInc=claimBenefit.jsp" />
+            <forward name="error" path="/index.jsp" redirect="false" />
+        </action>
+
+        <action path="/loadTemplateBeneficiaries"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadBeneficiariesAction"
+                scope="session">
+            <forward name="loadBeneficiaries" path="/beneficiaryForPayments.jsp" redirect="false" />
+        </action>
+
+        <action path="/preGenerateBenefitPayments"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.PreGenerateBenefitPayments"
+                scope="session">
+            <forward name="loadPayments" path="/addTaxBenefitPayments.jsp" redirect="false" />
+            <forward name="error" path="/addTaxBenefitPayments.jsp" redirect="false" />
+        </action>
+
+        <action path="/validationCauseClaim"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ValidateCauseClaimAction"
+                scope="session">
+            <forward name="errorValidation" path="/addInvoceHCM.do" redirect="false" />
+        </action>
+
+        <action path="/loadPhysicians"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadPhysiciansAction"
+                scope="request">
+            <forward name="error" path="/buildStructClaim.do"/>
+            <forward name="success" path="/index.jsp?pageInc=addPhysician.jsp"/>
+            <forward name="successPanel" path="/associatedPhysiciansPanel.jsp"/>
+        </action>
+
+        <action path="/generateBenefitPayments"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.GenerateBenefitPayments"
+                scope="session">
+            <forward name="loadPayments" path="/index.jsp" redirect="false" />
+            <forward name="error" path="/index.jsp" redirect="false" />
+        </action>
+
+        <action path="/loadActivities"
+                type="com.consisint.acsele.workflow.actions.LoadActivitiesClaimsAction"
+                validate="false">
+            <forward name="success" path="/claimInterfaces/activitiesClaim.jsp" contextRelative="true"/>
+            <forward name="error" path="/claimInterfaces/errorActivitiesPending.jsp" contextRelative="true" />
+        </action>
+
+        <action path="/historyOrderPayments"
+                type="com.consisint.acsele.workflow.actions.HistoryOrderPayments"
+                validate="false">
+            <forward name="search" path="/claimInterfaces/searchHistoryByOrderPayments.jsp" contextRelative="true"/>
+            <forward name="loadHistoryOrderPayment" path="/claimInterfaces/historyOrderPayments.jsp" contextRelative="true" />
+            <forward name="error" path="/claimInterfaces/errorActivitiesPending.jsp" contextRelative="true" />
+        </action>
+
+        <action path="/setHoldStatusForReserve"
+                scope="request"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SetHoldStatusForReserveAction"
+                validate="false">
+            <forward name="success" path="/buildStructClaim.do"/>
+            <forward name="error" path="/index.jsp" />
+        </action>
+
+        <action path="/setActiveStatusForReserve"
+                scope="request"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SetActiveForReserveStatusAction"
+                validate="false" >
+            <forward name="success" path="/buildStructClaim.do"/>
+            <forward name="error" path="/index.jsp" />
+        </action>
+
+
+        <action path="/claimHistoryAction"
+                scope="request"
+                type="com.consisint.acsele.claim.actions.ClaimHistoryAction"
+                validate="false" >
+            <forward name="success" path="/claimInterfaces/claimHistoryShow.jsp" contextRelative="true"/>
+            <forward name="error" path="/claimInterfaces/claimHistoryScrem.jsp" contextRelative="true"/>
+        </action>
+
+        <action path="/claimHistory"
+                type="org.apache.struts.actions.ForwardAction"
+                scope="request"
+                parameter="/claimInterfaces/claimHistoryScrem.jsp" />
+        <action path="/loadVariablesPayment"
+                scope="request"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadVariablesPaymentAction"
+                validate="false" >
+            <forward name="success" path="/VariablesPayment.jsp"/>
+            <forward name="error" path="/error.jsp" />
+        </action>
+        <action path="/validateAmounts"
+                scope="request"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ValidateAmountsAction"
+                validate="false" name="">
+            <forward name="success" path="/printGeneralMessage.jsp"/>
+        </action>
+
+        <action path="/searchThirdParty"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SearchThirdPartyAction"
+                scope="request" name="searchThirdParty">
+            <forward name="successThirdParties" path="/searchThirdParty.jsp"/>
+			<forward name="successThirdPartiesTwo" path="/searchThirdPartyTwo.jsp"/>
+            <forward name="error" path="/errorThirdPartySearch.jsp"/>
+        </action>
+        <action path="/searchPublishedContracts"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SearchPublishedContractAction"
+                scope="request" name="searchPublishedContracts">
+            <forward name="successPublishedContracts" path="/searchPublishedContracts.jsp"/>
+            <forward name="error" path="/errorThirdPartySearch.jsp"/>
+        </action>
+        <action path="/contractComponentsLists"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ContractComponentsListsAction"
+                scope="request" name="reinsuranceComponentAction">
+            <forward name="successComponentsLists" path="/contractComponentsLists.jsp"/>
+            <forward name="error" path="/errorThirdPartySearch.jsp"/>
+        </action>
+        <action path="/searchBill"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.BillsTableAction"
+                scope="request" name="claimBillsForm">
+            <forward name="success" path="/billsTable.jsp"/>
+        </action>
+
+        <action path="/searchThirdPartyToPurchaseOrder"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SearchThirdPartyAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="successThirdParties" path="/claimPurchaseOrder/SearchThirdPartyToPurchaseOrder.jsp"/>
+        </action>
+        <action path="/addClaimPurchaseOrder"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.AddClaimPurchaseOrderAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/ClaimPurchaseOrder.jsp"/>
+        </action>
+        <action path="/loadClaimPurchasesOrder"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.LoadClaimPurchasesOrderAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/ClaimPurchasesOrder.jsp"/>
+        </action>
+        <action path="/loadClaimPurchaseOrder"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.LoadClaimPurchaseOrderAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/ClaimPurchaseOrder.jsp"/>
+        </action>
+
+        <action path="/updateClaimPurchaseOrder"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.UpdateClaimPurchaseOrderAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/ClaimPurchaseOrder.jsp"/>
+        </action>
+        <action path="/selectClaimPurchaseOrderItem"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.SelectClaimPurchaseOrderItemAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/SelectClaimPurchaseOrderItem.jsp"/>
+        </action>
+        <action path="/addClaimPurchaseOrderDetailSelect"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.AddClaimPurchaseOrderDetailSelectAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/AddClaimPurchaseOrderDetail.jsp"/>
+        </action>
+        <action path="/addClaimPurchaseOrderDetailSubmit"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.AddClaimPurchaseOrderDetailSubmitAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/ClaimPurchaseOrder.jsp"/>
+        </action>
+        <action path="/updateClaimPurchaseOrderDetailSelect"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.UpdateClaimPurchaseOrderDetailSelectAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/UpdateClaimPurchaseOrderDetail.jsp"/>
+        </action>
+        <action path="/updateClaimPurchaseOrderDetailSubmit"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.UpdateClaimPurchaseOrderDetailSubmitAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/ClaimPurchaseOrder.jsp"/>
+        </action>
+        <action path="/deleteClaimPurchaseOrderDetail"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.DeleteClaimPurchaseOrderDetailAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp"/>
+            <forward name="success" path="/claimPurchaseOrder/ClaimPurchaseOrder.jsp"/>
+        </action>
+        <action path="/claimPurchaseOrderItems"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.ClaimPurchaseOrderItemAction"
+                parameter="action">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp" contextRelative="false"/>
+            <forward name="success" path="/claimPurchaseOrder/ClaimPurchaseOrderItem.jsp" contextRelative="false"/>
+            <forward name="editClaimPurchaseOrderItem" path="/claimPurchaseOrder/EditClaimPurchaseOrderItem.jsp" contextRelative="false"/>
+        </action>
+        <action path="/loadClaimPurchaseOrderItems"
+                type="com.consisint.acsele.workflow.claimapi.claimpurchaseorder.actions.LoadClaimPurchaseOrderItemsAction"
+                scope="request">
+            <forward name="error" path="/claimPurchaseOrder/ErrorClaimPurchaseOrder.jsp" contextRelative="false"/>
+            <forward name="success" path="/claimPurchaseOrder/ClaimPurchaseOrderItem.jsp" contextRelative="false"/>
+        </action>
+        <action path="/changePaymentStartDate"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ChangePaymentStartDateAction"
+                scope="request">
+            <forward name="success" path="/responseOfChangeStartDate.jsp"/>
+        </action>
+
+        <!-- Actions to Recovery -->
+        <action path="/listRecoveries"
+                type="com.consisint.acsele.recovery.view.ListRecoveriesAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/ListRecoveries.jsp"/>
+        </action>
+        <action path="/recoveryTemplateSelect"
+                type="com.consisint.acsele.recovery.view.RecoveryTemplateSelectAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/SearchRecoveryTemplate.jsp"/>
+        </action>
+        <action path="/addRecovery"
+                type="com.consisint.acsele.recovery.view.AddRecoveryAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/Recovery.jsp"/>
+        </action>
+        <action path="/loadRecovery"
+                type="com.consisint.acsele.recovery.view.LoadRecoveryAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/Recovery.jsp"/>
+        </action>
+        <action path="/updateRecovery"
+                type="com.consisint.acsele.recovery.view.UpdateRecoveryAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/Recovery.jsp"/>
+        </action>
+        <action path="/reverseRecovery"
+                type="com.consisint.acsele.recovery.view.RecoveryReverseAction"
+                scope="request"
+                validate="false">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="successList" path="/recovery/listRecoveryTable.jsp"/>
+            <forward name="success" path="/recovery/Recovery.jsp"/>
+        </action>
+        <action path="/addRecoveryDetailSelect"
+                type="com.consisint.acsele.recovery.view.AddRecoveryDetailSelectAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/RecoveryDetail.jsp"/>
+        </action>
+        <action path="/addRecoveryPartialPaymentSelect"
+                type="com.consisint.acsele.recovery.view.AddRecoveryPartialPaymentSelectAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/recoveryPartialPayment.jsp"/>
+        </action>
+        <action path="/addRecoveryDetailSubmit"
+                type="com.consisint.acsele.recovery.view.AddRecoveryDetailSubmitAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/Recovery.jsp"/>
+        </action>
+        <action path="/updateRecoveryDetailSelect"
+                type="com.consisint.acsele.recovery.view.UpdateRecoveryDetailSelectAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/RecoveryDetail.jsp"/>
+        </action>
+        <action path="/updateRecoveryDetailSubmit"
+                type="com.consisint.acsele.recovery.view.UpdateRecoveryDetailSubmitAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/Recovery.jsp"/>
+        </action>
+        <action path="/deleteRecoveryDetail"
+                type="com.consisint.acsele.recovery.view.DeleteRecoveryDetailAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/Recovery.jsp"/>
+        </action>
+        <action path="/paidRecovery"
+                type="com.consisint.acsele.recovery.view.PaidRecoveryAction"
+                scope="request">
+            <forward name="error" path="/recovery/ErrorRecovery.jsp"/>
+            <forward name="success" path="/recovery/Recovery.jsp"/>
+        </action>
+
+        <!-- ***************************************  Actions de ClaimInvoicesRefund ********************************************************** -->
+        <action path="/loadRefundInvoices"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoiceRefundAction">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+        <action path="/loadRefundInvoicesOperation"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoiceRefundAction"
+                parameter="newInvoiceRefund">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+        <action path="/editRefundInvoicesOperation"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoiceRefundAction"
+                parameter="editInvoiceRefund">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+        <action path="/consultRefundInvoicesOperation"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoiceRefundAction"
+                parameter="consultInvoiceRefund">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+        <action path="/editStatusRefundInvoicesOperation"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoiceRefundEditOperationAction">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+        <action path="/claimInvoiceRefundEditDynamicProperty"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoiceRefundEditDynamicPropertyAction">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+        </action>
+        <action path="/editClaimInvoiceRefundDetail"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.EditClaimInvoiceRefundDetailAction"
+                parameter="editInvoiceRefundDetail">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+        </action>
+        <action path="/deleteClaimInvoiceRefundDetail"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.EditClaimInvoiceRefundDetailAction"
+                parameter="deleteInvoiceRefundDetail">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+        </action>
+        <action path="/loadDcoClaimInvoiceRefundDetail"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadDcoClaimInvoiceRefundDetailAction">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+        </action>
+        <action path="/loadClaimInvoiceDetail"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadClaimInvoiceDetailAction">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+        </action>
+        <action path="/loadThirdsClaimInvoiceRefund"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadThirdsClaimInvoiceRefundAction">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+        </action>
+        <action path="/loadBenefitsClaimInvoiceRefund"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadBenefitsClaimInvoiceRefundAction">
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+        </action>
+        <action path="/saveClaimInvoiceRefund"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.SaveClaimInvoiceRefundAction"
+                name="ClaimInvoiceRefundForm"
+                scope="request">
+            <!--<forward name="success" path="/loadRefundInvoices.do"/>-->
+            <forward name="success" path="/index.jsp?pageInc=ClaimRefundInvoice.jsp"/>
+        </action>
+        <!-- End ************************************  Actions de ClaimInvoicesRefund ********************************************************** -->
+
+        <!-- ***************************************  Actions de ClaimInvocesHCM ********************************************************** -->
+        <action path="/loadAllInvocesHCM"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoceHCMCRUDAction"
+                name="claimBenefitForm"
+                parameter="loadInvoces"
+                scope="session"
+                validate="false">
+            <forward name="success" path="/index.jsp?pageInc=claimInvocesHCM.jsp"/>
+            <forward name="benefitAndPaymentBlocked" path="/index.jsp?pageInc=claimBenefitandPaymentsBlocked.jsp" />
+            <forward name="error" path="/index.jsp"/>
+        </action>
+        <action path="/addInvoceHCM"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoceHCMCRUDAction"
+                name="ClaimInvoceHCMForm"
+                input="/securityError.jsp"
+                parameter="add"
+                scope="session"
+                validate="false">
+            <forward name="success" path="/index.jsp?pageInc=claimBenefitHCM.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+        <action path="/editInvoceHCM"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoceHCMCRUDAction"
+                name="ClaimInvoceHCMForm"
+                input="/securityError.jsp"
+                parameter="load"
+                scope="session"
+                validate="false">
+            <forward name="success" path="/index.jsp?pageInc=claimBenefitHCM.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+        <action path="/deleteInvoceHCM"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoceHCMCRUDAction"
+                name="ClaimInvoceHCMForm"
+                input="/securityError.jsp"
+                parameter="delete"
+                scope="session"
+                validate="false">
+            <forward name="success" path="/loadInvocesHCM.do"/>
+            <forward name="error" path="/loadInvocesHCM.do"/>
+        </action>
+        <action path="/generatePOsInvoceHCM"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimInvoceHCMCRUDAction"
+                name="ClaimInvoceHCMForm"
+                input="/securityError.jsp"
+                parameter="generetePO"
+                scope="session"
+                validate="false">
+            <forward name="success" path="/index.jsp"/>
+            <forward name="error" path="/index.jsp"/>
+        </action>
+        <action path="/loadBeneficiariesAndPercentage"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadBeneficiariesAndPercentageAction"
+                name="BeneficiariesAndPercentageForm"
+                scope="session">
+            <forward name="success" path="/claimBeneficiariesAndPercentage.jsp" />
+            <forward name="successPanel" path="/claimBeneficiariesAndPercentagePanel.jsp" />
+        </action>
+        <!-- End ***************************************  Actions de ClaimInvocesHCM ********************************************************** -->
+
+        <!-- Actions for Claim Documents -->
+        <action path="/listClaimDocuments"
+                type="com.consisint.acsele.claim.actions.ListClaimDocumentsAction"
+                scope="request">
+            <forward name="error" path="/ErrorClaimDocuments.jsp" contextRelative="false" />
+            <forward name="success" path="/ListClaimDocuments.jsp" contextRelative="false" />
+        </action>
+
+        <action path="/claimDocumentsFile"
+                type="com.consisint.acsele.claim.actions.ClaimDocumentsFileAction"
+                scope="request">
+            <forward name="error" path="/ErrorClaimDocuments.jsp" contextRelative="false" />
+            <forward name="success" path="/ClaimDocumentsFile.jsp" contextRelative="false" />
+        </action>
+
+        <action path="/uploadClaimDocumentFile"
+                type="com.consisint.acsele.claim.actions.UploadClaimDocumentAction"
+                name="ClaimFileUpload"
+                scope="request">
+            <forward name="error" path="/ErrorClaimDocuments.jsp" contextRelative="false" />
+            <forward name="success" path="/ClaimDocumentOperationResult.jsp" contextRelative="false" />
+        </action>
+
+        <action path="/downloadClaimDocumentFile"
+                type="com.consisint.acsele.claim.actions.DownloadClaimDocumentAction"
+                scope="request">
+            <forward name="error" path="/ErrorClaimDocuments.jsp" contextRelative="false" />
+            <forward name="success" path="/ClaimDocumentOperationResult.jsp" contextRelative="false" />
+        </action>
+
+        <action path="/deleteClaimDocumentFile"
+                type="com.consisint.acsele.claim.actions.DeleteClaimDocumentAction"
+                scope="request">
+            <forward name="error" path="/ErrorClaimDocuments.jsp" contextRelative="false" />
+            <forward name="success" path="/ClaimDocumentOperationResult.jsp" contextRelative="false" />
+        </action>
+        <action path="/claimsWaitingPeriodConfiguration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClaimsWaitingPeriodConfigAction"
+                name="coveragePeriod"
+                scope="request">
+            <forward name="claimsPeriod" path="/ClaimsPeriodConfiguration.jsp" />
+            <forward name="claimsPay" path="/paymentCovRelation.jsp" />
+            <forward name="successPanel" path="/coverageAssociation.jsp" />
+            <forward name="error" path="/ErrorClaimDocuments.jsp" contextRelative="false"/>
+        </action>
+        <action path="/claimurlRelationRoleObjectCoverConfiguration"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.claimurlRelationRoleObjectCoverConfigurationAction"
+                name="coverageFormRole"
+                scope="request">
+            <forward name="claimsRoleRelation" path="/ClaimRelationRoleWithConceptCover.jsp" />
+            <forward name="success" path="/coverageAssociationRoleConcept.jsp" />
+            <forward name="error" path="/ErrorClaimDocuments.jsp" contextRelative="false"/>
+        </action>
+        <action path="/coverageInvoice"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.CoverageInvoiceAction"
+                name="coverageInvoiceForm"
+                scope="request">
+            <forward name="success" path="/coverageInvoice.jsp" />
+            <forward name="other" path="/coverageInvoiceList.do"/>
+        </action>
+
+        <action path="/lettersGuaranteeAction"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LettersGuaranteeAction"
+                name="lettersGuaranteeForm"
+                scope="request">
+            <forward name="close" path="/index.jsp" />
+            <forward name="lettersGuaranteeList" path="/index.jsp?pageInc=lettersGuaranteeList.jsp" />
+            <forward name="success" path="/index.jsp?pageInc=LetterGuarantee.jsp" />
+            <forward name="lettersGuaranteeActionConsul" path="/LetterGuaranteeConsul.jsp" />
+            <forward name="error" path="/index.jsp?pageInc=LetterGuarantee.jsp?error=yes" />
+        </action>
+
+
+        <action path="/coverageInvoiceList"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.CoverageInvoiceListAction"
+                name="coverageInvoiceListForm"
+                scope="request">
+            <forward name="success" path="/coverageInvoiceList.jsp" />
+            <forward name="bulk" path="/coverageInvoiceBulk.jsp" />
+            <forward name="successPayment" path="/assosciateCoverageInvoice.jsp" />
+
+        </action>
+
+        <action path="/associateCoverageInvoice"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.CoverageInvoiceListAction"
+                name="coverageInvoiceListForm"
+                scope="request">
+            <forward name="success" path="/assosciateCoverageInvoice.jsp" />
+        </action>
+
+        <action path="/lettersGuaranteeList"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LettersGuaranteeListAction"
+                name="lettersGuaranteeListForm"
+                scope="request">
+            <forward name="success" path="/index.jsp?pageInc=lettersGuaranteeList.jsp" />
+            <forward name="successPaging" path="/lettersGuaranteeDetail.jsp" />
+        </action>
+
+        <action path="/loadCoverageInvoiceDetail"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.CoverageInvoiceDetailAction" parameter="action">
+            <forward name="load" path="/coverageInvoiceDetailAdd.jsp"/>
+            <forward name="success" path="/coverageInvoiceDetailAdd.jsp"/>
+            <forward name="successSaveOrUpdate" path="/coverageInvoice.jsp"/>
+            <forward name="saveOrUpdate" path="/coverageInvoiceDetailAdd.jsp"/>
+            <forward name="other" path="/coverageInvoice.do"/>
+            <!--forward name="save" path="/coverageInvoiceDetailAdd.jsp"/-->
+        </action>
+
+        <!--<action path="/LettersGuaranteeDetailAction"-->
+                <!--type="com.consisint.acsele.workflow.claimInterfaces.actions.LettersGuaranteeDetailAction"-->
+                <!--parameter="action">-->
+            <!--<forward name="success" path="/LetterGuarantee.jsp"/>-->
+        <!--</action>-->
+
+        <action path="/findDocumentsOnClaim"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.FindDocumentsOnClaimAction"
+                scope="request" >
+            <forward name="success" path="/LetterHistoryClaimResult.jsp"/>
+            <forward name="error" path="/LetterHistoryClaimResult.jsp?error=yes"/>
+        </action>
+
+        <action path="/downloadLetterHistoryClaimFile"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.DownloadLetterHistoryClaimFileAction"
+                scope="request" >
+            <forward name="success" path="/LetterHistoryClaimResult.jsp"/>
+        </action>
+        <!-- Finds  Claims Documents YLUCES-->
+        <action path="/findClaimDocuments"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.FindClaimDocumentsAction"
+                scope="request" >
+            <forward name="success" path="/LetterHistoryClaimResult.jsp"/>
+            <forward name="error" path="/LetterHistoryClaimResult.jsp?error=yes"/>
+        </action>
+        <action path="/thirdPartySearchDocumentsChange"
+                type="com.consisint.acsele.thirdparty.action.ThirdPartySearchChangeAction"
+                scope="request">
+
+            <forward name="loaded"
+                     path="/claimsDocumentSearch_Redirect.jsp" />
+
+        </action>
+
+        <action path="/loadAjax"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadAjaxClaimValidations"
+                scope="request">
+        </action>
+
+        <action path="/loadCoverageInvoiceDetailsAction"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadCoverageInvoiceDetailsAction"
+                scope="request">
+        </action>
+
+        <action path="/loadDetailEventClaim" type="com.consisint.acsele.workflow.claimInterfaces.actions.LoadDetailEventClaim">
+            <forward name="success" path="/eventClaimDetail.jsp"/>
+        </action>
+
+        <action path="/deleteGeneralCorrespondence"
+                type = "com.consisint.acsele.workflow.claimInterfaces.actions.DeleteGeneralCorrespondenceAction"
+                name="correspondenceForm"
+                input="/securityError.jsp"
+                scope="session">
+            <forward name="correspondence" path="/ClaimsCorrespondenceConfiguration.jsp"/>
+        </action>
+        <action path="/clientCrm"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClientCrmAction"
+                scope="request">
+            <forward name="success" path="/CRMCaseSelection.jsp"/>
+        </action>
+        <action path="/clientCrmUpdate"
+                type="com.consisint.acsele.workflow.claimInterfaces.actions.ClientCrmUpdateAction"
+                scope="request">
+            <!--<forward name="success" path="/CRMCaseSelection.jsp"/>-->
+        </action>
+    </action-mappings>
+
+    <controller>
+        <set-property property="processorClass"
+                      value="com.consisint.acsele.util.hibernate.HibernateRequestProcessor"/>
+    </controller>
+
+
+    <!-- Message Resources Definitions -->
+    <message-resources key="CLAIM_MESSAGES"  factory="com.consisint.acsele.util.i18n.AcseleMessageResourceFactory"  parameter="ClaimMessagesBundle" null="false" />
+    <message-resources key="exceptions"  factory="com.consisint.acsele.util.i18n.AcseleMessageResourceFactory"  parameter="exceptions" null="false" />
+    <message-resources key="WORKFLOW_MESSAGES"  factory="com.consisint.acsele.util.i18n.AcseleMessageResourceFactory"  parameter="WorkflowMessagesBundle" null="false" />
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn" >
+        <set-property property="pathnames"
+                      value="/WEB-INF/struts/validator-rules.xml, /WEB-INF/struts/validator-form_claimInterfaces.xml"/>
+    </plug-in>
+</struts-config>

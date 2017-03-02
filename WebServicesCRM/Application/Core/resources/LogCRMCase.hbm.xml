@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+    <class
+        name="com.consisint.acsele.interseguro.interfaces.crm.entity.LogCRMCase"
+        table="EXT_LOGCRMCASE">
+        <id name="elCRMId" column="ELCRMID" unsaved-value="null">
+            <generator class="assigned"/>
+        </id>
+        <property name="crmNumber" column="CRMNUMBER"/>
+        <property name="movementDate" column="MOVEMENTDATE" type="date"/>
+        <property name="movementStatus" column="MOVEMENTSTATUS"/>
+        <property name="jsonIn" column="JSONIN"/>
+        <property name="jsonOut" column="JSONOUT"/>
+    </class>
+</hibernate-mapping>

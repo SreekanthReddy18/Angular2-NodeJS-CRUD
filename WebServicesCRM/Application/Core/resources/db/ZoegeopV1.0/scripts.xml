@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scripts version="X.Y.Z">
+    <!-- TEMPLATES
+    Script normal:
+    <script>630-005-created STPR_FormulaFolder and STPR_FormulaRepository.sql</script>
+
+    Script para DB central:
+    <script global-db="true">630-005- created STPR_FormulaFolder and STPR_FormulaRepository.sql</script>
+
+    Script que se debe ejecutar manual:
+    <script warn="true">630-005- created STPR_FormulaFolder and STPR_FormulaRepository.sql</script>
+
+    -->
+    <script>1300-178-ALTER_TABLE_STMA_TABLEINFORMATION.sql</script>
+    <script>1300-1141-DELETE_TABLE_SCM_SCRIPTS.sql</script>
+    <script global-db="true">1300-1142-DELETE_TABLE_SCM_SCRIPTS.sql</script>
+    <script>1300-001-CREATE_TABLE_STCA_DAMAGED_RECEIPTNUMBER.sql</script>
+    <script>1300-002-CREATE_TABLE_STCL_FRAUDCLAIM.sql</script>
+    <script>1300-003-CREATE_TABLE_STCL_VERSION_FRAUDCLAIM.sql</script>
+    <script>1300-004-ALTER_TABLE_STAD_CLAIMCONTEXT.sql</script>
+    <script>1300-005-ALTER_TABLE_STCL_COVERAGEINVOICE.sql</script>
+    <script client="LBC">1300-006-CREATE_TABLE_BACTHPROCESS_CONSULT_SEGUSIG.sql</script>
+    <script client="LBC">1300-007-CREATE_TABLE_EXT_SEGUSIG_LOCATION.sql</script>
+    <script client="LBC">1300-008-CREATE_TABLE_EXT_SEGUSIG_POLICIES.sql</script>
+    <script client="LBC">1300-009-CREATE_TABLE_EXT_SEGUSIG_AMOUNTS.sql</script>
+    <script>1300-010-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script>1300-010-ALTER_TABLE_CASHIER.sql</script>
+    <script>1300-011-INSERT_TABLE_PAYMENTTYPE.sql</script>
+    <script>1300-011-ALTER_TABLE_STHC_ENDORSEMENTLETTER.sql</script>
+    <script>1300-011-ALTER_TABLE_STCL_RECOVERYDETAIL.sql</script>
+    <script>1300-012-CREATE_TABLE_STRI_REINSURANCEKIND.sql</script>
+    <script>1300-012-ALTER_TABLE_STCA_RECEIPTINFORMATION.sql</script>
+    <script>1300-013-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-013-CREATE_TABLE_STNO_NOTIFICATIONCONF.sql</script>
+    <script warn="true" client="LBC">1300-014-CREATE_TABLE_EXT_FINANCIALPLAN_LBC.sql</script>
+    <script>1300-014-CREATE_TABLE_STNO_NOTIFICATIONPARAMETER.sql</script>
+    <script warn="true" client="LBC">1300-015-CREATE_TABLE_EXT_REINSURANCEGROUP_LBC.sql</script>
+    <script>1300-015-CREATE_TABLE_STNO_NOTIFICATIONLENGUAGE.sql</script>
+    <script warn="true" client="LBC">1300-016-CREATE_TABLE_EXT_DOCTYPES_AX.sql</script>
+    <script warn="true" client="LBC">1300-017-CREATE_TABLE_EXT_PRODUCTION_DC.sql</script>
+    <script global-db="true">1300-018-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-019-UPDATE_TABLE_REPORTS.sql</script>
+    <script warn="true">1300-019-INSERT_ENTRYOP.sql</script>
+    <script>1300-021-CREATE_TABLE_STCA_CASHRECEIPTINFORMATION.sql</script>
+    <script>1300-022-CREATE_BATCHPROCESS_POLICYSPY.sql</script>
+    <script>1300-023-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script>1300-024-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script global-db="true">1300-010-UPDATE_TABLE_MESSAGETRANSLATION.sql</script>
+    <script>1300-029-ALTER_TABLE_STCI_COINSURANCEPARTICIPATION.sql</script>
+    <script>1300-032-CREATE_TABLE_STIN_FORMLESS.sql</script>
+    <script>1300-408-ALTER_TABLE_STRP_LETTEREVENT.sql</script>
+    <script>1300-445-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-457-ALTER_TABLE_STAS_HISTORY.sql</script>
+    <script global-db="true">1300-020-UPDATE_TABLE_REPORTS_COLUM_FORMAT.sql</script>
+    <script warn="true" client="LBC">1300-025-CREATE_TABLE_EXT_SINIESTROS_DC.sql</script>
+    <script>1300-016-CREATE_TABLE_STTE_BIDIRECTIONALRELATION.sql</script>
+    <script global-db="true">1300-027-CREATE_TABLE_CDSE_PASSHISTORY.sql</script>
+    <script global-db="true">1300-038-ADD_USER_PASSHISTORY.sql</script>
+    <script warn="true" client="LBC">1300-030-CREATE_TABLE_EXT_RRC_DC.sql</script>
+    <script warn="true" client="LBC">1300-033-CREATE_TABLE_EXT_INITENTRIES.sql</script>
+    <script warn="true" client="LBC">1300-034-CREATE_TABLE_EXT_INITENTRIES_DETAILS.sql</script>
+    <script warn="true" client="LBC">1300-035-CREATE_TABLE_EXT_RELATEDDOCUMENTS.sql</script>
+    <script warn="true" client="LBC">1300-036-CREATE_TABLE_EXT_ENTRIESLOG.sql</script>
+    <script warn="true" client="LBC">1300-037-CREATE_TABLE_EXT_ENTRIESLOG_DETAILS.sql</script>
+    <script>1300-039-ALTER_TABLA_STCL_RECOVERY.sql</script>
+    <script warn="true" client="LBC">1300-040-CREATE_BATCHPROCESS_USERS.sql</script>
+    <script warn="true" client="LBC">1300-041-CREATE_TABLES_USERS.sql</script>
+    <script client="LBC">1300-047-CREATE_TABLE_STPR_BATCHPOLINSPECTION.sql</script>
+    <script client="LBC">1300-044-CREATE_TABLE_STPR_BATCHTHIRDPOLINSPECTION.sql</script>
+    <script client="LBC">1300-046-CREATE_TABLE_STPR_BATCHAPPLYEVENT.sql</script>
+    <script client="LBC">1300-026-CREATE_TABLE_BATCHPROCESS_CONCESSIONAIRESPOLICY.sql</script>
+    <script>1300-031-DELETE_STST_SYSTEMPROPERTY.sql</script>
+    <script global-db="true">1300-049-ALTER_TABLE_CDSE_USER.sql</script>
+    <script>1300-028-ALTER_TABLE_ STCI_COINSURANCELIQMVMT.sql</script>
+    <script client="LBC">1300-051-CREATE_TABLE_EXT_POLICYPRODUCTIONOBJ.sql</script>
+    <script client="LBC">1300-052-CREATE_TABLE_EXT_POLICYPRODUCTION.sql</script>
+    <script client="LBC">1300-053-CREATE_TABLE_EXT_POLICYMOVEMENT.sql</script>
+    <script>1300-058-CREATE_TABLE_STPR_BATCHPROCESSPOLICY.sql</script>
+    <script>1300-043-ALTER_TABLE_STNO_NOTIFICATIONCONF.sql</script>
+    <script>1300-059-ALTER_TABLE_CLAIMNOTIFICATION.sql</script>
+    <script warn="true">1300-060-INSERT_ENTRYOP.sql</script>
+    <script>1300-061-UPDATE_TABLE_CLAIMREQUISITE.sql</script>
+    <script>1300-062-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script>1300-063-ALTER_TABLE_STCI_COINSURANCECONTRACT.sql</script>
+    <script global-db="true">1300-064-MODIFY_BUNDLE_USERMAINTENANCE.sql</script>
+    <script>1300-065-ALTER_TABLE_STCI_COINSURANCEPARTICIPATION.sql</script>
+    <script global-db="true">1300-066-INSERT_BUNDLES_RISK_PERCENTAGE.sql</script>
+    <script>1300-068-CREATE_TABLE_BATCHPROCESS_THIRDPARTYLOAD.sql</script>
+    <script client="LBC">1300-069-CREATE_TABLE_EXT_POLICYPORTFOLIO.sql</script>
+    <script>1300-048-CREATE_TABLE_STTE_THIRDPARTYCONSORTIUMPART.sql</script>
+    <script client="LBC">1300-042-CREATE_TABLE_STPR_BATCHFEELIBERATION.sql</script>
+    <script>1300-077-ALTER_TABLE_PAYMENTORDER.sql</script>
+    <script>1300-078-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script client="LBC">1300-079-CREATE_EXT_COLLECTIONHEADER_LBC.sql</script>
+    <script client="LBC">1300-080-CREATE_EXT_COLLECTIONDETAILS_LBC.sql</script>
+    <script>1300-050-CREATE_TABLE_STCL_INVOICETAXESRELATION.sql</script>
+    <script>1300-117-ALTER_TABLE_STCL_COVERAGEINVOICE.sql</script>
+    <script>1300-081-ALTER_TABLE_STNO_NOTIFICATIONCONF.sql</script>
+    <script warn="true" client="LBC">1300-082-CREATE_TABLE_EXT_COLLECTIONSDUEDATE.sql</script>
+    <script client="LBC">1300-083-CREATE_TABLE_BATCHPROCESS_DUEDATEUPDATE.sql</script>
+    <script warn="true" client="LBC">1300-084-CREATE_TABLE_EXT_PAGOSCONCESIONARIAS.sql</script>
+    <script client="Alfa,LBC">1300-085-CREATE_TABLE_BATCHPROCESS_PAYMENT.sql</script>
+    <script>1300-082-CREATE_TABLE_STNO_NOTIFICATION.sql</script>
+    <script warn="true" client="LBC">1300-088-CREATE_TABLE_EXT_POLICIES_APB.sql</script>
+    <script warn="true" client="LBC">1300-089-CREATE_TABLE_EXT_BENEFICIARIES_APB.sql</script>
+    <script warn="true" client="LBC">1300-090-CREATE_TABLE_EXT_DOCUMENTSUMMARY.sql</script>
+    <script client="LBC">1300-091-CREATE_TABLE_EXT_BATCHPROCESS_POLICY_APB.sql</script>
+    <script warn="true" client="LBC">1300-092-CREATE_TABLE_EXT_INSOBJ_APB.sql</script>
+    <script warn="true" client="LBC">1300-093-CREATE_TABLE_EXT_COVERAGES_APB.sql</script>
+    <script>1300-094-ALTER_TABLE_STTE_CREDITLINE.sql</script>
+    <script client="LBC">1300-095-CREATE_TABLE_EXT_POLIZAS_BNB_BSOL.sql</script>
+    <script client="LBC">1300-096-CREATE_TABLE_EXT_POLIZASDETAILS_BNB.sql</script>
+    <script client="LBC">1300-097-CREATE_TABLE_EXT_DOCUMENTSUMMARY.sql</script>
+    <script client="LBC">1300-099-CREATE_TABLE_BATCHPROCESS_LIFE_GROUP_BNB.sql</script>
+    <script client="LBC">1300-057-CREATE_TABLE_STPR_BACTHPROCESSCLAIM.sql</script>
+    <script client="LBC">1300-055-CREATE_TABLE_EXT_CLAIMPRODUCTION.sql</script>
+    <script client="LBC">1300-054-CREATE_TABLE_EXT_CLAIMMOVEMENT.sql</script>
+    <script client="LBC">1300-056-CREATE_TABLE_EXT_CLAIMPRODUCTIONDETAIL.sql</script>
+    <script client="LBC">1300-067-ALTER_TABLE_STPR_BATCHTHIRDPOLINSPECTION.sql</script>
+    <script>1300-100-CREATE_TABLE_STCI_PARTICIPATIONORDERNUMBER.sql</script>
+    <script>1300-101-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script client="LBC">1300-104-CREATE_TABLE_BATCHPROCESS_ENTRY_RLTRC.sql</script>
+    <script global-db="true">1300-103-UPDATE_TABLE_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-105-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script client="LBC">1300-106-CREATE_BATCHPROCESS_REINS_ENTRIES.sql</script>
+    <script warn="true" client="LBC">1300-107-ALTER_TABLE_CONSTRAINT_EXT_ENTRIESLOG.sql</script>
+    <script client="LBC">1300-107-CREATE_TABLE_STPR_BATCHPROCESSOPERATION.sql</script>
+    <script client="LBC">1300-108-CREATE_TABLE_EXT_PRODUCTIONFLOW.sql</script>
+    <script client="LBC">1300-109-CREATE_TABLE_EXT_FLOWSFILE.sql</script>
+    <script client="LBC">1300-110-CREATE_TABLE_EXT_FLOWSPORTFOLIO.sql</script>
+    <script client="LBC">1300-111-CREATE_TABLE_EXT_PRODUCTOPERATIONPOLICY.sql</script>
+    <script>1300-106-ALTER_TABLE_STPS_THIRDPARTYVALIDATION.sql</script>
+    <script>1300-102-ALTER_TABLE_STPO_POLICYDOCUMENTS.sql</script>
+    <script client="LBC">1300-113-CREATE_TABLE_EXT_POLIZAS_FIE.sql</script>
+    <script warn="true" client="LBC">1300-114-CREATE_TABLE_EXT_LOGPOLIZASFIE.sql</script>
+    <script client="LBC">1300-115-CREATE_TABLE_BATCHPROCESS_BANCOFIE.sql</script>
+    <script client="LBC">1300-116-CREATE_TABLE_EXT_STATEMENTS_CONS.sql</script>
+    <script client="LBC">1300-117-CREATE_TABLE_BATCHPROCESS_APP_CONSESO.sql</script>
+    <script client="LBC">1300-118-CREATE_TABLE_EXT_STATEMENTSBENEF_CONS.sql</script>
+    <script>1300-117-ALTER_TABLE_STCI_COINSURANCECONTRACT.sql</script>
+    <script>1300-112-ALTER_TABLE_REINSURANCEOPERATION.sql</script>
+    <script warn="true" client="LBC">1300-119-CREATE_TABLE_EXT_STATEMENTSTRANSPORT.sql</script>
+    <script warn="true" client="LBC">1300-120-CREATE_TABLE_EXT_COV_STATEMENTS.sql</script>
+    <script warn="true" client="LBC">1300-121-CREATE_TABLE_BATCHPROCESS_STATEMENTSTRANSPORT.sql</script>
+    <script warn="true" client="LBC">1300-122-CREATE_BATCHPROCESSREL_TRANSP.sql</script>
+    <script client="LBC">1300-123-CREATE_TABLE_BATCHPROCESS_BANCO_SOL_POL.sql</script>
+    <script client="LBC">1300-124-CREATE_TABLE_EXT_POLIZASDETAILS_BSOL.sql</script>
+    <script warn="true" client="LBC">1300-125 -ALTER_TABLE_EXT_APS_THIRDPARTY.sql</script>
+    <script client="LBC">1300-126-ALTER_TABLE_EXT_INSERT_POLICY.sql</script>
+    <script client="LBC">1300-126-CREATE_TABLE_EXT_PRODUCTIONENTRY.sql</script>
+    <script client="LBC">1300-127-CREATE_TABLE_STPR_BATCHPROCESSENTRY.sql</script>
+    <script>1300-127-INSERT_HOLDER_ROLES.sql</script>
+    <script global-db="true">1300-128-UPDATE_TABLE_MESSAGETRANSLATION.sql</script>
+    <script client="Rimac">1300-130-ALTER_TABLE_EXT_RESERVE.sql</script>
+    <script>1300-131-ALTER_TABLE_STRP_RISKRESERVEDETAIL.sql</script>
+    <script>1300-118-CREATE_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script global-db="true">1300-132-INSERT_BUNDLE_INCURREDCLAIMSREPORT.sql</script>
+    <script>1300-116-ALTER_TABLE_TEMPROPERTYVALIDATIONS.sql</script>
+    <script client="LBC">1300-086-CREATE_TABLE_EXT_PREMIUM.sql</script>
+    <script client="LBC">1300-087-CREATE_TABLE_STPR_BATCHPROCESSPREMIUM.sql</script>
+    <script warn="true" client="LBC">1300-133-CREATE_BATCHPROCESS_STATEMENTS_VM.sql</script>
+    <script warn="true" client="LBC">1300-134-CREATE_TABLE_EXT_STATEMENTS_VM.sql</script>
+    <script warn="true" client="LBC">1300-135-CREATE_TABLE_EXT_STATEMENTSBENEF_VM.sql</script>
+    <script>1300-136-CREATE_TABLE_STPR_BATCHPENDINGDOCUMENTS.sql</script>
+    <script client="LBC">1300-139-ALTER_TABLE_STPR_BATCHTHIRDPOLINSPECTION.sql</script>
+    <script global-db="true">1300-137-UPDATE_REPORTS.sql</script>
+    <script>1300-140-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script client="LBC">1300-142-ALTER_EXT_CONSULT_THIRDPARTY.sql</script>
+    <script>1300-143-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script client="LBC">1300-098-CREATE_TABLE_STPR_BATCHPROCEREINSURANCE.sql</script>
+    <script client="LBC">1300-070-CREATE_TABLE_EXT_PRODUCTIONCONTRACT.sql</script>
+    <script client="LBC">1300-071-CREATE_TABLE_EXT_PRODUCTIONPARTICIPATION.sql</script>
+    <script client="LBC">1300-072-CREATE_TABLE_EXT_PRODUCTIONOPERATION.sql</script>
+    <script client="LBC">1300-073-CREATE_TABLE_EXT_PRODUCTOPERCOMPONENT.sql</script>
+    <script client="LBC">1300-074-CEATE_TABLE_EXT_PRODUCTOPERDETAIL.sql</script>
+    <script client="LBC">1300-075-CREATE_TABLE_EXT_PRODUCTOPERCLAIM.sql</script>
+    <script client="LBC">1300-076-CREATE_TABLE_EXT_PRODUCTOPERCLAIMDETAIL.sql</script>
+    <script client="LBC">1300-136-CREATE_TABLE_EXT_POLICIES_CONS.sql</script>
+    <script client="LBC">1300-137-CREATE_TABLE_BATCHPROCESS_SEARCHPOLICIES.sql</script>
+    <script client="LBC">1300-138-CREATE_TABLE_EXT_THIRDPARTY_DT.sql</script>
+    <script client="LBC">1300-141-CREATE_EXT_HISTORICAL_SIBIL.sql</script>
+    <script client="Alfa,LBC">1300-143-CREATE_PROCESS_CONSULT_INFOR_THIRDPARTY.sql</script>
+    <script>1300-143-ALTER_TABLE_STJS_PROCESS.sql</script>
+    <script>1300-144-ALTER_TABLE_STPS_CLAIMCOVVALIDATION.sql</script>
+    <script>1300-144-INSERT_STJS_JOBCONF.sql</script>
+    <script warn="true">1300-145-INSERT_STJS_APPOINTMENT.sql</script>
+    <script warn="true" client="LBC">1300-146-CREATE_TABLE_EXT_COLLECTIONDETAILS_APB.sql</script>
+    <script warn="true" client="LBC">1300-147-CREATE_TABLE_EXT_COLLECTIONHEADER_APB.sql</script>
+    <script client="LBC">1300-148-CREATE_TABLE_EXT_PROFESIONES_IE.sql</script>
+    <script warn="true" client="LBC">1300-149-INSERT_TABLE_EXT_PROFESIONES_IE.sql</script>
+    <script client="LBC">1300-150-CREATE_TABLE_BATCHPROCESSREL_SEARCHPOLICIES.sql</script>
+    <script client="LBC">1300-151-CREATE_TABLE_BACTHPROCESSREL_BANCOFIE.sql</script>
+    <script>1300-152-UPDATE_TABLE_STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-154-ALTER_TABLE_STPS_CLAIMCOVVALIDATION.sql</script>
+    <script>1300-153-ALTER_TABLE_STPS_CLAIMDMGVALIDATION.sql</script>
+    <script>1300-153-ALTER_TABLE_PROPERTY.sql</script>
+    <script>1300-151-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script>1300-156-INSERT_STJS_JOBCONF.sql</script>
+    <script>1300-157-INSERT_STJS_APPOINTMENT.sql</script>
+    <script client="LBC">1300-158-CREATE_TABLE_BATCHPROCESSREL_BNB.sql</script>
+    <script client="LBC">1300-159-CREATE_TABLE_BATCHPROCESSREL_CONCESIONARIO.sql</script>
+    <script client="LBC">1300-160-CREATE_TABLE_BATCHPROCESSREL_BANCOFIE.sql</script>
+    <script client="LBC">1300-161-CREATE_TABLE_BATCHPROCESSREL_BANCOSOL.sql</script>
+    <script client="LBC">1300-162-CREATE_TABLE_BATCHPROCESSREL_VM.sql</script>
+    <script client="LBC">1300-163-CREA_TABLE_BATCHPROCESSREL_APBANCRUZ.sql</script>
+    <script global-db="true">1300-164_UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-165_UPDATE_TABLE_STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-166_ALTER_TABLE_STRI_REINSURERLIQUIDATION.sql</script>
+    <script>1300-154-ALTER_TABLE_STPR_MASSIVECONFDETAIL.sql</script>
+    <script global-db="true">1300-168_UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-169-ALTER_TABLE_STPR_MASSIVECONFLEVEL.sql</script>
+    <script>1300-167-CREATE_TABLE_STPR_MASSCONFLEVELREFERENCE.sql</script>
+    <script>1300-168-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-170-ALTER_TABLE_STCL_CLAIMDOCUMENTS.sql</script>
+    <script>1300-174_ALTER_TABLE_STCL_LETCOVROL.sql</script>
+    <script>1300-175-CREATE_TABLE_STPT_QUOTECONF.sql</script>
+    <script client="LBC">1300-171-CREATE_TABLE_STPR_BATCHRISKRESERVE.sql</script>
+    <script>1300-167-ALTER_TABLE_CASHIERREGISTER.sql</script>
+    <script>1300-171-ALTER-TABLE-CLAIMNORMALRESERVE.sql</script>
+    <script>1300-172-ALTER_TABLE_CLAIM.sql</script>
+    <script client="LBC">1300-172-CREATE_TABLE_STPR_RISKRESERVELBC.sql</script>
+    <script client="LBC">1300-173-ALTER_TABLE_STPR_RISKRESERVELBC.sql</script>
+    <script>1300-176-ALTER_TABLE_STPR_MASSIVECONFLEVEL.sql</script>
+    <script client="LBC">1300-177-CREATE_INDEX_STPR_RISKRESERVELBC.sql</script>
+    <script>1300-191-CREATE_TABLE_STPO_RISKSEARCHCONF.sql</script>
+    <script client="LBC">1300-192-ALTER_TABLE_EXT_POLICYMOVEMENT.sql</script>
+    <script client="LBC">1300-193-ALTER_TABLE_EXT_POLICYPORTFOLIO.sql</script>
+    <script client="LBC">1300-209-ALTER_TABLE_EXT_POLICYPORTFOLIO.sql</script>
+    <script client="LBC">1300-210-ALTER_TABLE_EXT_PREMIUM.sql</script>
+    <script client="LBC">1300-221-ALTER_TABLE_EXT_PREMIUM.sql</script>
+    <script client="LBC">1300-226-ALTER_TABLE_STPR_BACTHPROCESSCLAIM.sql</script>
+    <script client="LBC">1300-227-ALTER_TABLE_EXT_CLAIMPRODUCTIONDETAIL.sql</script>
+    <script client="LBC">1300-228-ALTER_TABLE_EXT_CLAIMPRODUCTION.sql</script>
+    <script client="LBC">1300-229-ALTER_TABLE_EXT_CLAIMMOVEMENT.sql</script>
+    <script client="LBC">1300-230-ALTER_TABLE_EXT_PRODUCTOPERCLAIM.sql</script>
+    <script global-db="true">1300-230-INSERT-CDTR_MESSAGETRANSLATION.sql</script>
+    <script client="LBC">1300-231-ALTER_TABLE_STPR_BATCHPROCEREINSURANCE.sql</script>
+    <script>1300-234-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script warn="true" client="LBC">1300-239-ALTER_TABLE_EXT_COLLECTIONHEADER_LBC.sql</script>
+    <script warn="true" client="LBC">1300-240-ALTER_TABLE_EXT_COLLECTIONDETAILS_LBC.sql</script>
+    <script>1300-244-ALTER_TABLE_STCA_RECEIPTINFORMATION.sql</script>
+    <script>1300-219-CREATE_TABLE_STPR_MASSXMLSTRUCTURE.sql</script>
+    <script>1300-220-ALTER_TABLE_STPR_MASSIVECONFDETAIL.sql</script>
+    <script>1300-242-STPR_ALTER_TABLE_MASSXMLSTRUCTURE.sql</script>
+    <script>1300-248-ALTER_TABLE_AGREGATEDFINANCIALPLAN.sql</script>
+    <script>1300-249-ALTER_TABLE_STHC_ENDORSEMENTLETTER.sql</script>
+    <script>1300-261-ALTER_TABLE_CLAIMRESERVEADJUST.sql</script>
+    <script>1300-179-ALTER_TABLE_STPR_MASSCONFLEVELREFERENCE.sql</script>
+    <script>1300-180-ALTER_TABLE_STCL_COVERAGEINVOICEDETAIL.sql</script>
+    <script>1300-181-INSERT_STJS_JOBCONF.sql</script>
+    <script>1300-182-INSERT_STJS_APPOINTMENT.sql</script>
+    <script>1300-183-ALTER_TABLE_STPR_MASSIVECONFEQUIVALENCE.sql</script>
+    <script client="LBC">1300-184-CREATE_TABLE_BATCHPROCESS_BANCO_SOL.sql</script>
+    <script warn="true" client="LBC">1300-185-CREATE_TABLE_EXT_DEV_BSOL.sql</script>
+    <script>1300-186-CREATE_TABLE_BATCHPROCESSREL_AXESODEV.sql</script>
+    <script client="LBC">1300-188-CREATE_TABLE_EXT_CANAL_LBC.sql</script>
+    <script client="LBC">1300-189-CREATE_TABLE_EXT_SEGMENT.sql</script>
+    <script>1300-187-ALTER_TABLE_STPR_MASSIVECONFDETAIL.sql</script>
+    <script client="LBC">1300-194-CREATE_TABLE_BATCHPROCESS_DATAMARTCLAIM.sql</script>
+    <script client="LBC">1300-195-CREATE_TABLE_BATCHPROCESS_DATAMARTPOLICIES.sql</script>
+    <script global-db="true">1300-199_UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-190-ALTER_TABLE_STPR_MASSCONFLEVELREFERENCE.sql</script>
+    <script>1300-196-CREATE_TABLE_STTE_CENTRALRISK.sql</script>
+    <script>1300-197-ALTER_TABLE_STPR_MASSIVECONFLEVEL.sql</script>
+    <script>1300-198-CREATE_TABLE_STPR_BATCHCENTRALRISK.sql</script>
+    <script warn="true" client="Axa">1300-200-CREATE_TABLE_EXT_COLLECTIONHD_CS.sql</script>
+    <script warn="true" client="Axa">1300-201-CREATE_TABLE_EXT_COLLECTIONDT_CS.sql</script>
+    <script client="LBC">1300-202-CREATE_TABLE_EXT_SEGMENT.sql</script>
+    <script client="LBC">1300-203-CREATE_TABLE_EXT_MOVTYPE.sql</script>
+    <script global-db="true">1300-206-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-206-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-211-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-212-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script client="LBC">1300-213-CREATE_TABLE_BATCHPROCESS_DATAMARTRRC.sql</script>
+    <script>1300-204-CREATE_TABLE_STPR_MASSCONFSECTION.sql</script>
+    <script>1300-214-INSERT_STJS_JOBCONF.sql</script>
+    <script>1300-215-INSERT_STJS_APPOINTMENT.sql</script>
+    <script>1300-218-ALTER_TABLE_STPR_MASSCONFSECTION.sql</script>
+    <script global-db="true">1300-218-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-223-ALTER_TABLE_STTE_CENTRALRISK.sql</script>
+    <script client="LBC">1300-205-CREATE_TABLE_STPR_BATCHPROCESSTHIRD.sql</script>
+    <script client="LBC">1300-216-ALTER_TABLE_STPR_BATCHPROCESSTHIRD.sql</script>
+    <script client="LBC">1300-199-CREATE_TABLE_EXT_TPTNATURALPERSON.sql</script>
+    <script client="LBC">1300-222-ALTER_TABLE_EXT_TPTNATURALPERSON.sql</script>
+    <script client="LBC">1300-224-ALTER_TABLE_EXT_TPTNATURALPERSON.sql</script>
+    <script client="LBC">1300-207-CREATE_TABLE_EXT_TPTLEGALPERSON.sql</script>
+    <script client="LBC">1300-225-ALTER_TABLE_EXT_TPTLEGALPERSON.sql</script>
+    <script client="LBC">1300-208-CREATE_TABLE_EXT_TPTADDRESSDATA.sql</script>
+    <script global-db="true">1300-231-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-232-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-235-ALTER_TABLE_STPS_SUBSREQCOVERAGE.sql</script>
+    <script>1300-217-ALTER_TABLE_STPS_CORRESPONDENCE.sql</script>
+    <script>1300-236-ALTER_TABLE_STPT_SUBSREQUIREMENT.sql</script>
+    <script>1300-237-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-233-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script global-db="true">1300-240-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script warn="true">1300-241-PROCEDURE-STCA_DOCTYPE.sql</script>
+    <script>1300-235-CREATE_TABLE_STPO_RISKSEARCHCONF.sql</script>
+    <script>1300-238-CREATE_TABLE_STCL_FRANCHISE.sql</script>
+    <script>1300-239-ALTER_TABLE_CLAIMPAYMENT.sql</script>
+    <!--script global-db="true">1300-230-INSERT_CDTR_MESSAGETRANSLATION.sql</script-->
+    <script>1300-243-ALTER_TABLE_STCA_RECEIPTDOSAGE.sql</script>
+    <script>1300-300-ALTER_TABLE_STRI_OPHISTDETAILCLAIM.sql</script>
+    <script>1300-301-ALTER_TABLE_STRI_OPHISTDETAILCLAIM.sql</script>
+    <script>1300-302-ALTER_RI_TECHNICALACCOUNTS.sql</script>
+    <script warn="true" client="Interseguro">1300-303-ALTER_RI_TECHACC_IOGENERATED.sql</script>
+    <script client="LBC">1300-245-CREATE_TABLE_BATCHPROCESSREL_BILL_APB.sql</script>
+    <script client="LBC">1300-246-CREATE_TABLE_BATCHPROCESS_BILL_APBANCRUZ.sql</script>
+    <script warn="true" client="LBC">1300-247-CREATE_TABLE_EXT_APBANCRUZ_FACT.sql</script>
+    <script global-db="true">1300-250-ALTER_TABLE_CDSE_USER.sql</script>
+    <script>1300-251-UPDATE_TABLE_STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-252-ALTER_TABLE_STCA_RECEIPTINFORMATION.sql</script>
+    <script>1300-253-ALTER_TABLE_RI_CONTRACTCOMPONENT.sql</script>
+    <script>1300-254-ALTER_TABLE_AGREGATEDFINANCIALPLAN.sql</script>
+    <script>1300-255-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script>1300-256-CREATE_TABLE_STMA_CURRATEVALIDATION.sql</script>
+    <script client="Axa">1300-262-CREATE_TABLE_BATCHPROCESS_CCY_RESERVE.sql</script>
+    <script>1300-257-ALTER_TABLE_RI_CLAIMOPERATIONS.sql</script>
+    <script>1300-264-INSERT_STJS_JOBCONF.sql</script>
+    <script>1300-265-INSERT_STJS_APPOINTMENT.sql</script>
+    <script>1300-259-ALTER_TABLE_PROPERTY.sql</script>
+    <script global-db="true">1300-267-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-272-CREATE_TABLE_STRI_MINPREMIUMDEPOSIT.sql</script>
+    <script>1300-273-CREATE_TABLE_STRI_MINPREDEPDISTRIBUTION.sql</script>
+    <script>1300-260-INSERT_STJS_JOBCONF.sql</script>
+    <script>1300-261-INSERT_STJS_APPOINTMENT.sql</script>
+    <script>1300-263-ALTER_TABLE_STCL_RECOVERY.sql</script>
+    <script>1300-260-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script warn="true" client="LBC">1300-304-ALTER_TABLE_EXT_FLOWSPORTFOLIO.sql</script>
+    <script>1300-266-ALTER_TABLE_THIRDPARTYMOVEMENTPOLICY.sql</script>
+    <script>1300-270-ALTER_TABLE_STAD_THIRDPARTYCONTEXT.sql</script>
+    <!--<script warn="true">1300-274-ALTER_TABLE_STCI_COINSURANCECONTRACT.sql</script>-->
+    <!--<script>1300-275_CREATE_TABLE_STCI_COINSURANCECONTRACTDCO.sql</script>-->
+    <script warn="true">1300-276_INSERT_ENTRYOP.sql</script>
+    <!--<script warn="true">1300-413-MIGRATION_EXISTING_POLICIES.sql</script>-->
+    <script>1300-277-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script global-db="true">1300-305-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-268-CREATE_TABLE_STMA_RESTRICTIVELIST.sql</script>
+    <script>1300-306-CREATE_TABLE_STMA_RESTRICTIVELISTREL.sql</script>
+    <script client="Alfa">1300-510-CREATE_CTRINT_CASHRECEIPT.sql</script>
+    <script client="Alfa">1300-510-CREATE_LOGINT_CASHRECEIPT.sql</script>
+    <script client="Alfa">1300-511-CREATE_LOGINT_ACCOUNTENTRY.sql</script>
+    <script client="Alfa">1300-511-CREATE_CTRINT_ACCOUNTENTRY.sql</script>
+    <script client="Alfa">1300-535-CREATE_CTRINT_CONFIRENTRY.sql</script>
+    <script client="Alfa">1300-535-CREATE_LOGINT_REVERENTRY.sql</script>
+    <script client="Alfa">1300-535-CREATE_LOGINT_CONFIRENTRY.sql</script>
+    <script>1300-538-CREATE_TABLE_STMA_RESTRICTIVELISTPROP.sql</script>
+    <script client="Alfa">1300-582-CREATE_CTRINT_GENCASHRECEIPT.sql</script>
+    <script client="Alfa">1300-582-CREATE_CTRINT_GENCONFIRENTRY.sql</script>
+    <script client="Alfa">1300-582-CREATE_CTRINT_GENACCOUNTENTRY.sql</script>
+    <!--script>1300-307-ALTER_TABLE_RENMASIVA_PRODUCTLISTINPUT.sql</script-->
+    <script>1300-308-ALTER_TABLE_RI_REINSURANCECONTRACT.sql</script>
+    <script warn="true" client="Interseguro">1300-400-ALTER_TABLE_RI_TECHACC_OISROOTS.sql</script>
+    <script warn="true" client="Interseguro">1300-401-ALTER_TABLE_ST_CREATECHACC.sql</script>
+    <script warn="true" client="LBC">1300-404-CREATE_TABLE_EXT_LOGSEGUSIG.sql</script>
+    <script>1300-271-ALTER_TABLE_STCL_COVERAGEINVOICE.sql</script>
+    <script>1300-279-CREATE_TABLE_STCL_INVOICESUMMARY.sql</script>
+    <!--script>1300-307-UPDATE_CDTR_MESSAGETRANSLATION.sql</script-->
+    <script>1300-305-CREATE_TABLE_STLI_FUNDTYPE.sql</script>
+    <script client="LBC">1300-309-CREATE_TABLE_BACTHPROCESS_UPDATE_SEGUSIG.sql</script>
+    <script global-db="true">1300-402-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-403-CREATE_TABLE_STPR_BATCHCLAIMRESERVE.sql</script>
+    <script>1300-405-CREATE_TABLE_STRP_CLAIMRESERVE.sql</script>
+    <script>1300-307-CREATE_TABLE_STPO_GVTFUNDTYPEDETAIL.sql</script>
+    <script>1300-262-INSERT_STJS_JOBCONF.sql</script>
+    <script client="Interseguro">1300-263-INSERT_STJS_APPOINTMENT.sql</script>
+    <script>1300-254-CREATE_TABLE_STRI_CLAUSULE.sql</script>
+    <script>1300-258-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-262-ALTER_TABLE_PAYMENTORDER.sql</script>
+    <script>1300-269-CREATE_TABLE_STAD_RESTRICTIVELISTCONTEXT.sql</script>
+    <script>1300-406-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-262-ALTER_TABLE_STCI_COINSURANCELIQUIDATION.sql</script>
+    <script>1300-278-ALTER_TABLE_PAYMENTORDER.sql</script>
+    <script>1300-308-ALTER_TABLE_STPS_CLAIMDMGVALIDATION.sql</script>
+    <script>1300-311-CREATE_TABLE_STPR_BATCHCLAIMRESERVE.sql</script>
+    <script>1300-312-CREATE_TABLE_STRP_CLAIMRESERVE.sql</script>
+    <script global-db="true">1300-406-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-407-ALTER_TABLE_STRP_SYSTEMDOCUMENTS.sql</script>
+    <script>1300-409-ALTER_TABLE_STPS_RISKUNITLETTER.sql</script>
+    <script>1300-410-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script>1300-411-UPDATE-STAD_AUDITTRAIL.sql</script>
+    <script>1300-412-CREATE_TABLE_STMA_LISTCOINCIDENCECONF.sql</script>
+    <script>1300-413-CREATE_TABLE_STPR_BATCHPROCESSOPENITEM.sql</script>
+    <script>1300-414-CREATE_TABLE_STPR_BATCHTHIRDRESTLISTS.sql</script>
+    <script warn="true">1300-417-ALTER_TABLE_RI_REINSURANCECONTRACT.sql</script>
+    <script>1300-418-CREATE_TABLE_STAD_RESTLISTSEARCHCONTEXT.sql</script>
+    <script>1300-419-ALTER_TABLE_RI_CONTRACTCOMPONENT.sql</script>
+    <script>1300-459-INSERT_TABLE_STLI_DOCUMENTLOAN.sql</script>
+    <script>1300-464-UPDATE-STST_SYSTEMPROPERTY.sql</script>
+    <script global-db="true">1300-489-UPDATE_TABLE_MESSAGETRANSLATION.sql</script>
+    <script client="Interseguro">1300-502-CREATE_TABLE_STPR_BATCHMASSPAYMENT.sql</script>
+    <script>1300-504-ALTER_TABLE_STAD_AUDITTRAIL.sql</script>
+    <script>1300-617-CREATE_TABLE_STAD_VALIDATIONCONTEXT.sql</script>
+    <script>1300-529-ALTER_TABLE_STAD_RESTLISTSEARCHCONTEXT.sql</script>
+
+    <script warn="true" client="Interseguro">1300-403-ALTERTABLE_tdplanequivalency.sql</script>
+    <script>1300-404-ALTERTABLE_PAYMENTORDER.sql</script>
+    <script warn="true">1300-415-INSERT_TABLE_PAYMENTTYPE.sql</script>
+    <script>1300-423-ALTER_TABLE_STTE_CENTRALRISK.sql</script>
+    <script global-db="true">1300-425-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <!--script>1300-426-ALTER_TABLE_RECIAIncendios.sql</script-->
+    <script>1300-415-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script global-db="true">1300-418-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-309-ALTER_TABLE_COVERAGETITLE.sql</script>
+    <script global-db="true">1300-428-ALTER_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script warn="true" client="Axa">1300-237-ALTER_TABLE_EXT_COLLECTIONDT_CS.sql</script>
+    <script>1300-416-CREATE_TABLE_STCL_PAYMENTFORM.sql</script>
+    <script>1300-405-ALTERTABLE_CLAIMPAYMENT.sql</script>
+    <script global-db="true">1300-429-ALTER_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-430-ALTER_TABLE_STRP_LETTEREVENT.sql</script>
+    <script>1300-424-CREATE_TABLE_STPT_FUNDCONFCOVERAGE.sql</script>
+    <script>1300-431-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-432-CREATE_TABLE_STPO_WILDCARDQUOTA.sql</script>
+    <script>1300-433-ALTER_TABLE_RI_REINSURANCECONTRACT.sql</script>
+    <script global-db="true">1300-433-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-427-CREATE_TABLE_STCL_PAYMENTDOCUMENTS.sql</script>
+    <!--script>1300-434-CREATE_TABLE_BACTHPROCESS_UPDATE_SEGUSIG.sql</script-->
+    <script>1300-438-CREATE_TABLE_STEN_GROUPCONF.sql</script>
+    <!--script>1300-434-CREATE_TABLE_BACTHPROCESS_UPDATE_SEGUSIG.sql</script-->
+    <script>1300-435-ALTER_TABLE_STPS_COINSURANCECONTRACT.sql</script>
+    <script global-db="true">1300-441-CREATE_INDEX_IX_SST_LOGIN.sql</script>
+    <script>1300-439-ALTER_TABLE_STAD_THIRDPARTYCONTEXT.sql</script>
+    <script>1300-440-ALTER_TABLE_WORKFLOWUSER.sql</script>
+    <script>1300-437-CREATE_TABLE_STPR_BATCHWILDCARDQUOTA.sql</script>
+    <script global-db="true">1300-446-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-447-UPDATE_ENTRYOP.sql</script>
+    <script>1300-442-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-446-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-449-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-440-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-443-CREATE_TABLE_STPO_SURCHARGETYPE.sql</script>
+    <script>1300-420-CREATE_TABLE_STPO_SURCHARGES.sql</script>
+    <script>1300-443-CREATE_TABLE_STPO_SURCHARGETYPE.sql</script>
+    <script>1300-448-ALTER_TABLE_STPO_SURCHARGETYPE.sql</script>
+    <script global-db="true">1300-451-INSERT_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-450-ALTER_TABLE_STNO_NOTIFICATION.sql</script>
+    <script global-db="true">1300-453-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-454-DELETE_INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-455-UPDATE-STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-307-CREATE_TABLE_STPO_GVTFUNDTYPEDETAIL.sql</script>
+    <script>1300-424-CREATE_TABLE_STPT_FUNDCONFCOVERAGE.sql</script>
+    <script>1300-421-CREATE_TABLE_STPT_SURCHARGEEVENTCONF.sql</script>
+    <script>1300-422-CREATE_TABLE_STPT_USERPERMBYSURCHARGE.sql</script>
+    <script global-db="true">1300-452-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-456-INSERT_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-434-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script global-db="true">1300-461-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <!--script global-db="true">1300-462-UPDATE_CDTR_MESSAGETRANSLATION.sql</script-->
+    <script>1300-444-CREATE_TABLE_STPR_BATCHLOANDOCUMENTED.sql</script>
+    <script>1300-454-CREATE_TABLE_STLI_DOCUMENTLOAN.sql</script>
+    <script>1300-459-INSERT_TABLE_STLI_DOCUMENTLOAN.sql</script>
+    <script>1300-407-ALTER_TABLE_COLLECTAMOUNT.sql</script>
+    <script global-db="true">1300-460-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-465-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-466-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-470-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-472-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-474-ALTER_TABLE_STJS_PROCESS.sql</script>
+    <script>1300-478_INSERT_TABLE_STJS_JOBCONF.sql</script>
+    <script>1300-460-ALTER_TABLE_STPO_SURCHARGESDCO.sql</script>
+    <script>1300-480-CREATE_TABLE_STST_HOLIDAYS.sql</script>
+    <script>1300-482-CREATE_TABLE_STPR_BATCHACCOUNTINGENTRY.sql</script>
+    <script warn="true">1300-483_INSERT_ENTRYOP.sql</script>
+    <script client="Axa">1300-484-ALTER_TABLE_stpg_openitemfile.sql</script>
+    <script>1300-485-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <!--<script>1300-471-CREATE_TABLE_STST_HOLIDAYS.sql</script>-->
+    <!--<script>1300-472-ALTER_TABLE_stpg_openitemfile.sql.sql</script>-->
+    <script global-db="true">1300-522-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-469-CREATE_TABLE_STCA_DOCTTYPEPROP.sql</script>
+    <script>1300-488-UPDATE_STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-487-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-471-CREATE_TABLE_STRI_FACULTATIVEGUARANTEE.sql</script>
+    <!--<script warn="true">1300-479-ALTER_TABLE_STCI_COINSURANCECONTRACTDCO.sql</script>-->
+    <script global-db="true">1300-489-UPDATE_TABLE_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-495-INSERT_MESSAGESBUNDLE_FRONTEND.sql</script>
+    <script global-db="true">1300-496-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-488-CREATE_TABLE_STEN_INSUREDSUMEXECUTION.sql</script>
+    <!--<script>1300-489-CREATE_TABLE_STCI_COINSURANCEPARTDCO.sql</script>-->
+    <script global-db="true">1300-498-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-499-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-500-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-501-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-503-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-463-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-463-UPDATE-STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-500-UPDATE_STMA_RESTRICTIVELIST.sql</script>
+    <script global-db="true">1300-510-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-507-ALTER_TABLE_STRI_MINPREDEPDETAIL.sql</script>
+    <script global-db="true">1300-520-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script warn="true" client="LBC">1300-508-ALTER_TABLE_BACTHPROCESS_APS_THIRDPARTY.sql</script>
+    <script>1300-468-ALTER_TABLE_EVENTTYPE.sql</script>
+    <!--<script warn="true">1300-509-MIGRATION_EXISTING_COINSURANCEPARTICIPATION.sql</script>-->
+    <script>1300-445-CREATE_TABLE_STPO_PENDINGFACULTATIVE.sql</script>
+    <script>1300-481-CREATE_TABLE_STRI_OPEDETDISTRIBUTION.sql</script>
+    <script>1300-436-CREATE_TABLE_STRI_PREVTECHNICALACCOUNT.sql</script>
+    <script global-db="true">1300-523-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-456-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script global-db="true">1300-521-UPDATE_CDTR_MESSAGETRANSLATION_PAYMENTMODE.sql</script>
+    <script>1300-458-CREATE_TABLE_STRI_STOPLOSS.sql</script>
+    <script>1300-516-ALTER_TABLE_STAD_THIRDPARTYCONTEXT.sql</script>
+    <script>1300-517-ALTER_TABLE_STPO_SURCHARGETYPE.sql</script>
+    <script global-db="true">1300-509-CREATE_TABLE_CDSE_THIRDPROFILE.sql</script>
+    <script>1300-473-ALTER_TABLE_RI_CLAIMOPERATIONDETAILS.sql</script>
+    <script>1300-486-CREATE_TABLE_EXT_CLAIMINVOICE.sql</script>
+    <script global-db="true">1300-508-ALTER_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-523-ALTER_TABLE_CDES_SESSIONTOKEN_ADD.sql</script>
+    <script>1300-467-CREATE_TABLE_STEN_GROUPING.sql</script>
+    <script>1300-468-ALTER_TABLE_STEN_GROUPING.sql</script>
+    <script global-db="true">1300-525-CREATE_TABLE_STAD_AUDITTRAIL.sql</script>
+    <script>1300-526-ALTER_TABLE_STEN_GROUPING.sql</script>
+    <script>1300-438-CREATE_TABLE_STEN_GROUPCONF.sql</script>
+    <script global-db="true">1300-524-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <!--<script warn="true">1300-527-ALTER_TABLE_COINSURANCEPARTICIPATION.sql</script>-->
+    <script>1300-529-ALTER_TABLE_STAD_RESTLISTSEARCHCONTEXT.sql</script>
+    <script client="LBC">1300-252-CREATE_BATCHPROCESS_INSUREDCAPITAL.sql</script>
+    <script global-db="true">1300-528-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-530-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-531-INSERT_STJS_JOBCONF.sql</script>
+    <script client="Interseguro">1300-532-INSERT_STJS_APPOINTMENT.sql</script>
+    <script>1300-533-ALTER_TABLE_STPS_CLAIMCOVVALIDATION.sql</script>
+    <script>1300-534-UPDATE_STNO_NOTIFICATIONCONF.sql</script>
+    <script global-db="true">1300-535-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-536-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-537-UPDATE_TABLE_STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-538-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script global-db="true">1300-540-DELETE_ACL_INCONSISTENTS.sql</script>
+    <script>1300-539-ALTER_TABLE_STPO_SURCHARGETYPE.sql</script>
+    <script global-db="true">1300-547-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-548-ALTER_TABLE_PROPERTY.sql</script>
+    <script>1300-550-ALTER_TABLE_STPO_PENDINGFACULTATIVE.sql</script>
+    <script warn="true" client="Interseguro">1300-600-ALTER_TABLE_EXT_SYSTEMNAMES.sql</script>
+    <script warn="true" client="Interseguro">1300-601-CREATE_EXT_SERVICES_FACTORY_REG.sql</script>
+    <script warn="true" client="Interseguro">1300-900-ALTER_STEN_SUNACCOUNTINT.sql</script>
+    <script warn="true" client="Alfa,LBC">1300-902-ALTER_TABLE_PROCESS_CONS_INF_THIRDPARTY.sql</script>
+    <script global-db="true">1300-558-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <!--duplicado-->
+    <script client="Axa">1300-901-CREATE_TABLE_STAS_ASSISTANCEHEADER_STAS_ASSISTANCEDETAIL.sql</script>
+    <script>1300-566-CREATE_TABLE_STCA_DOCTYPEENTRY.sql</script>
+    <script>1300-560-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script global-db="true">1300-559-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-903-ALTER_TABLE_CSS_COMMRECORD.sql</script>
+    <script global-db="true">1300-904-GU_Update_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-905-DELETE_TABLE_STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-910-UPDATE_ENTRYOP.sql</script>
+    <script global-db="true">1300-457-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-574-ALTER_TABLE_BACTHPROCESS_CONSULT_POLICY.sql</script>
+    <script>1300-604-ALTER_STPT_SUBSREQUIREMENT.sql</script>
+    <script global-db="true">1300-605-INSERT_MESSAGESBUNDLE.sql</script>
+    <script global-db="true">1300-606-CREATE_TABLE_REPORTS.sql</script>
+    <script warn="true" client="Alfa">1300-911-CREATE_KARRAY.sql</script>
+    <script warn="true" client="Alfa">1300-912-CREATE_FUNCTION_SPLIT.sql</script>
+    <script warn="true" client="Alfa">1300-913-UPDATE_TABLA_PERSONAJURIDICASARLAFT.sql</script>
+    <script warn="true" client="Alfa">1300-914-UPDATE_TABLA_PERSONANATURALSARLAFT.sql</script>
+    <script global-db="true">1300-580-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-915-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-916-ALTER_TABLE_PAYMENTORDERDETAIL.sql</script>
+    <script>1300-624-CREATE_TABLE_STPO_DELETEDCOVERAGE.sql</script>
+    <script>1300-917-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-918-ALTER_TABLE_PAYMENTORDERDETAIL.sql</script>
+    <script>1300-919-UPDATE_TABLE_PROPERTY.sql</script>
+    <script>1300-511-CREATE_TABLE_STRI_ADVANCE.sql</script>
+    <script>1300-512-ALTER_TABLE_RI_CONTRACTCOMPONENT.sql</script>
+    <script>1300-920-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-921-CREATE_TABLE_STRI_PREMIUMADJUST.sql</script>
+    <script>1300-922-CREATE_TABLE_STRI_PREMIUMADJUSDETAIL.sql</script>
+    <script warn="true" client="Interseguro">1300-602-CREATE_CONTEXT_MASSIVE_PRINTING.sql</script>
+    <script warn="true">1300-603-ALTER_STRP_LETTERCONTENT.sql</script>
+    <script client="Axa">1300-923-CREATE_TABLE_STAS_ASSISTANCEHEADER_STAS_ASSISTANCEDETAIL.sql</script>
+    <script>1300-924-CONSTRAINT_TABLE_EVENTTYPE.sql</script>
+    <script global-db="true">1300-925-ALTER_TABLE_CDSE_USER.sql</script>
+    <script>1300-926-ALTER_TABLE_WORKFLOWUSER.sql</script>
+    <script>1300-619-ALTER_TABLE_STCL_RESERVESTATE.sql</script>
+    <script>1300-616-ALTER_TABLE_VALIDATIONS.sql</script>
+    <script>1300-617-CREATE_TABLE_STAD_VALIDATIONCONTEXT.sql</script>
+    <script>1300-618-ALTER_TABLE_STRI_OPEDETDISTRIBUTION.sql</script>
+    <script global-db="true">1300-620-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script client="Alfa">1300-620-ALTER_TABLE_CTRINT_CASHRECEIPT.sql</script>
+    <script client="Alfa">1300-621-ALTER_TABLE_CTRINT_CASHRECEIPT.sql</script>
+    <script global-db="true">1300-927-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-622-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-570-CREATE_TABLE_STPR_MASSIVECONFSYMBOL.sql</script>
+    <script>1300-571-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script>1300-578-ALTER_TABLE_STPR_MASSIVECONFLEVEL.sql</script>
+    <script>1300-579-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script>1300-580-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script>1300-592-CREATE_TABLE_STPR_MASSHEADERFILE.sql</script>
+    <script>1300-593-ALTER_TABLE_STPR_MASSIVEDETAILVALUE.sql</script>
+    <script>1300-598-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script>1300-600-ALTER_TABLE_STPR_MASSIVELEVELVALUE.sql</script>
+    <script>1300-601-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script>1300-608-ALTER_TABLE_STPR_MASSIVECONFLEVEL.sql</script>
+    <script>1300-609-ALTER_TABLE_STPR_MASSHEADERFILE.sql</script>
+    <script>1300-610-ALTER_TABLE_STPR_MASSIVELEVELPROCESS.sql</script>
+    <script>1300-611-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script>1300-612-ALTER_TABLE_STPR_MASSIVELEVELPROCESS.sql</script>
+    <script>1300-620-ALTER_TABLE_STPR_MASSIVECONFDETAIL.sql</script>
+    <script>1300-621-ALTER_TABLE_STPR_MASSIVECONFSYMBOL.sql</script>
+    <script>1300-623-ALTER_TABLE_STPR_MASSCONFSECTION.sql</script>
+    <script>1300-928-CREATE_TABLE_STRP_LETTERSIGNATURE.sql</script>
+    <script global-db="true">1300-624-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-625-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-626-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-627-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-628-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-629-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-628-ALTER_TABLE_LOGINT_ACCOUNTENTRY.sql</script>
+    <script global-db="true">1300-623-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-929-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-930-ALTER_TABLE_CLAIMNORMALRESERVE.sql</script>
+    <script client="Axa">1300-925-CREATE_TABLE_OIM_REINSURANCE_CONTRACTS.sql</script>
+    <script>1300-537-ALTER_TABLE_OPENITEMREFERENCE.sql</script>
+    <script>1300-587-ALTER_TABLE_OPENITEMREFERENCE.sql</script>
+    <script>1300-931-ALTER_TABLE_STPO_SURCHARGESDCO.sql</script>
+    <script>1300-932-ALTER_TABLE_STCA_RECEIPTDOSAGE.sql</script>
+    <script warn="true" client="LBC">1300-948-CREATE_TABLE_STPR_BATCHDAILYENTRY.sql</script>
+    <script warn="true" client="LBC">1300-949-ALTER_TABLE_EXT_INITENTRIES_DETAILS.sql</script>
+    <script warn="true">1300-949-CREATE_TABLE_STPR_BATCHDAILYENTRY.sql</script>
+    <script>1300-623-ALTER_TABLE_PAYMENTORDER.sql</script>
+    <script>1300-630-Create_STLI_RESERVEFORMULAHISTORY.sql</script>
+    <script>1300-631-ALTER_TABLE_STPS_LIFERESERVECONFFORMULA.sql</script>
+    <script>1300-950-INSERT_ENTRYGROUP.sql</script>
+    <script client="Rimac">1300-581-CREATE_TABLE_STPR_BATCHPROCESSRRC.sql</script>
+    <script client="LBC">1300-951-CREATE_TABLE_STPR_BATCHDOSAGEPAYMENT.sql</script>
+    <script>1300-999-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-504-ALTER_TABLE_STAD_AUDITTRAIL.sql</script>
+    <script global-db="true">1300-1121-ALTER_TABLE_CDSE_USER.sql</script>
+    <script>1300-632-ALTER_TABLE_STPR_MASSIVECONFDETAIL.sql</script>
+    <script>1300-633-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script global-db="true">1300-630-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-631-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-631-UPDATE_STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-916-UPDATE_TABLE_PROPERTY.sql</script>
+    <script global-db="true">1300-632-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-998-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-999-CREATE_TABLE_STCA_OPENITEMDOCUMENTS.sql</script>
+    <script>1300-952-ALTER_TABLE_AGREGATEDFINANCIALPLAN.sql</script>
+    <script global-db="true">1300-1000-ALTER-TABLE_CDES_SESSIONTOKEN.sql</script>
+    <script client="BanruralHN">1300-1001-CREATE_TABLE_BATCHPROCESS_DIRECT_DEBIT.sql</script>
+    <script global-db="true">1300-1002-UPDATE_MESSAGESBUNDLE_FRONTEND.sql</script>
+    <script warn="true">1300-949-RECREATE_TABLES_RESERVES_CONF_FORMULA_HISTORY.SQL</script>
+    <script>1300-574-CREATE_TABLE_STMA_RESTRICTIVELISTXML.sql</script>
+    <script>1300-575-ALTER_TABLE_STMA_RESTRICTIVELISTPROP.sql</script>
+    <script>1300-1002-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script global-db="true">1300-997-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1003-CREATE_TABLE_STSE_USERDOCTTYPE.sql</script>
+    <script global-db="true">1300-1004-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1120-ALTER_TABLE_STAD_VALIDATIONCONTEXT.sql</script>
+    <script>1300-1122-ALTER_TABLE_STAD_VALIDATIONCONTEXT.sql</script>
+    <script warn="true" client="BanruralHN">1300-1005-CREATE_TABLE_EXT_OPENITEM_PAYMENT.sql</script>
+    <script global-db="true">1300-505-CREATE_TABLE_CDSE_LEVEL.sql</script>
+    <script global-db="true">1300-506-CREATE_TABLE_CDSE_MENURELLEVEL.sql</script>
+    <script global-db="true">1300-576-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1006_CREATE_TABLE_STPR_BATCHRESERVEADJUSTMENT.sql</script>
+    <script global-db="true">1300-1007-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-1008-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script warn="true" client="Interseguro">1300-940-CREATE_TABLE_EXT_LOGINTERFZNOTIFICATION.sql</script>
+    <script warn="true" client="Interseguro">1300-941-CREATE_SHA256.sql</script>
+    <script warn="true" client="Interseguro">1300-942-ALTER_SQ_HELP.sql</script>
+    <script warn="true" client="Interseguro">1300-943-CREATE_EVENT_SAMP_OBJECT.sql</script>
+    <script warn="true" client="Interseguro">1300-944-ALTER_INTERFAZ_SAC.sql</script>
+    <script warn="true" client="Interseguro">1300-945-ALTER_INT_AUX.sql</script>
+    <script warn="true" client="Interseguro">1300-946-ALTER_INTERFAZ_IOPSAMP.sql</script>
+    <script warn="true" client="Interseguro">1300-947-INSERT_INTERFAZ_SAMP_NOTIFICATION.sql</script>
+    <script warn="true">1300-949-RECREATE_TABLES_RESERVES_CONF_FORMULA_HISTORY.SQL</script>
+    <script warn="true" client="Interseguro">1300-960-ALTER_VIEW_POLIZAS_ESTADO_SAMP.SQL</script>
+    <script warn="true" client="Interseguro">1300-961-ALTER_CONTEXT_MASSIVE_PRINTING.SQL</script>
+    <script>1300-504-ALTER_TABLE_STAD_AUDITTRAIL.sql</script>
+    <script>1300-599-CREATE_TABLE_STAD_CONFIDLEVELCONTEXT.sql</script>
+    <script global-db="true">1300-634-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-585-ALTER_TABLE_STCA_DOCTYPE.sql</script>
+    <script global-db="true">1300-1009-UPDATE_MESSAGE_TRANSLATION_THIRDPARTY_MOVEMENTS.sql</script>
+    <script global-db="true" exec-all-time="true">1300-1010-UPDATE_CORRECTIONS_SPECIAL_CHARACTERS.sql</script>
+    <script exec-all-time="true">1300-1011-UPDATE_CORRECTIONS_SPECIAL_CHARACTERS.sql</script>
+    <script>1300-962-ALTER_TABLE_REINSURANCEOPERATIONDETAIL.sql</script>
+    <script global-db="true">1300-963-INSERT-CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1010-ALTER_TABLE_PAYMENTORDER.sql</script>
+    <script>1300-1011-ALTER_TABLE_CLAIMRESERVEADJUST.sql</script>
+    <script global-db="true">1300-1015-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-1016-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1017-ALTER_TABLE_STRI_FACULTATIVEPOLICY.sql</script>
+    <script>1300-1018-ALTER_TABLE_STPO_PENDINGFACULTATIVE.sql</script>
+    <script>1300-1021-CREATE_TABLE_STPS_PRODUCTQUOTAGROUPING.sql</script>
+    <script>1300-1022-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script warn="true" global-db="true">1300-1017-UPDATE-CDTR_MESSAGETRANSLATION_FIX.sql</script>
+    <script>1300-964-CREATE_TEMPORARY_TABLE_RRC_TMP.sql</script>
+    <script global-db="true">1300-1018-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-1023-INSERT-CDTR_MESSAGETRANSLATION.sql</script>
+    <script warn="true" client="Interseguro">1300-963-ALTER_EXT_LOGINTERFZNOTIFICATION.sql</script>
+    <script global-db="true">1300-522-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-533-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-534-UPDATE_STCA_RECEIPTDOSAGE.sql</script>
+    <script>1300-537-ALTER_TABLE_STCA_RECEIPTINFORMATION.sql</script>
+    <script global-db="true">1300-538-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-539-CREATE_TABLE_STCA_RECEIPTMODALITYCONF.sql</script>
+    <script warn="true">1300-575-ALTER_TABLE_COLLECTAMOUNT.sql</script>
+    <script>1300-051-ALTER_TABLE_STPR_MASSCONFSECTION.sql</script>
+    <script>1300-052-ALTER_TABLE_STPR_MASSIVELEVELVALUE.sql</script>
+    <script>1300-1024-ALTER_TABLE_STAD_CUSTOMAUDITITEM.sql</script>
+    <script warn="true" client="Axa">1300-1040-CREATE_TABLE_EXT_BATCHPROCESSORISSUEDPERIOD.sql</script>
+    <script warn="true" client="Axa">1300-630-CREATE_TABLE_EXT_BATCHPROCESSORISSUEDPERIOD.sql</script>
+    <script>1300-1025-ALTER_TABLE_STNO_NOTIFICATIONCONF.sql</script>
+    <script global-db="true">1300-1018-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-1020-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-1021-INSERT-CDTR_MESSAGETRANSLATION.sql</script>
+    <script warn="true">1300-1029-ALTER_COLUMN_GRUPOMERCADORIASINPUT_POLTRANSPORTESRC.sql</script>
+    <script global-db="true">1300-581-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1030-CREATE_TABLE_STCL_COMMSTATEHISTORY.sql</script>
+    <script>1300-1031-ALTER_TABLE_CSS_COMMRECORD.sql</script>
+    <script global-db="true">1300-1026-INSERT-CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-1027-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1032-ALTER_TABLE_STPO_CUMULUS.sql</script>
+    <script>1300-635-ALTER_TABLE_STPO_WILDCARDQUOTA.sql</script>
+    <script global-db="true">1300-584-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1033-ALTER_TABLE_STCL_CLAIMOPERATIONHISTORY.sql</script>
+    <script warn="true" client="Interseguro">1300-607-CREATE_EXT_INTERMEDIA_SAPN.sql</script>
+    <script>1300-583-CREATE_TABLE_STCA_COLLECTOROPERATION.sql</script>
+    <script>1300-580-ALTER_TABLE_STCA_DAMAGED_RECEIPTNUMBER.sql</script>
+    <script>1300-582-CREATE_TABLE_STCA_DOSAGECASHCONF.sql</script>
+    <script>1300-1034-CREATE_TABLE_STPR_BATCHRISKRESERVEALFA.sql</script>
+    <script client="Alfa">1300-1035-CREATE_TABLE_EXT_RISKRESERVEALFA.sql</script>
+    <script client="Alfa">1300-1036_ALTER_TABLE_EXT_RISKRESERVEALFA.sql</script>
+    <script client="Alfa">1300-1037-ALTER_TABLE_EXT_RISKRESERVEALFA.sql</script>
+    <script>1300-1038-ALTER_TABLE_CLAIMEVENTMAINTENANCE.sql</script>
+    <script warn="true">1300-608-ALTER_STPT_SUBSREQUIREMENT.sql</script>
+    <script>1300-585-ALTER_TABLE_STCA_RECEIPTDOSAGE.sql</script>
+    <script>1300-1007-CREATE_TABLE_STRI_PREVTECHACCOUNTBROKER.sql</script>
+    <script>1300-1124-ALTER_TABLE_STRI_PREVTECHNICALACCOUNT.sql</script>
+    <script client="Alfa">1300-1038-ALTER_TABLE_EXT_RISKRESERVEALFA.sql</script>
+    <script>1300-1130-ALTER_TABLE_ACTIVITYOPERATIONTYPE.sql</script>
+    <script>1300-1042-ALTER_TABLE_STPO_CUMULUS.sql</script>
+    <script>1300-1143-ALTER_TABLE_STPO_SUBSREQUIREMENT.sql</script>
+    <script>1300-1052-ALTER_TABLE_CSS_COMMRECORD.sql</script>
+    <script>1300-1053-CREATE_TABLE_STCL_COMMSTATEHISTORY.sql</script>
+    <script>1300-1054-ALTER_TABLE_CSS_COMMRECORD.sql</script>
+    <script>1300-1055-ALTER_TABLE_CSS_COMMRECORD.sql</script>
+    <script global-db="true">1300-1127-ALTER_TABLE_CDSE_THIRDSECTION.sql</script>
+    <script>1300-1128-CREATE_TABLE_STTE_PRELIQUIDATIONMOVEMENT.sql</script>
+    <script>1300-1129-ALTER_TABLE_STTE_PRELIQUIDATIONMOVEMENT.sql</script>
+    <script global-db="true">1300-1125-ALTER_TABLE_CDSE_THIRDSECTION.sql</script>
+    <script global-db="true">1300-1126-ALTER_TABLE_CDSE_THIRDSECTION.sql</script>
+    <script global-db="true">1300-953-ALTER_TABLE_CDSE_THIRDPERMISSION.sql</script>
+    <script global-db="true">1300-1043-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-1133-CREATE_TABLE_CDSE_MENU.sql</script>
+    <script global-db="true">1300-1134-INSERT_INTO_CDSE_MENU.sql</script>
+    <script global-db="true" warn="true">1300-1052-RELATORIOSLISTFIX_GU_DB_PL.sql</script>
+    <script global-db="true" warn="true">1300-1053_RELATORIOSLISTFIX_GU_DB.sql</script>
+    <script global-db="true">1300-1056-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1058-CREATE_TABLE_STCL_DEDUCEDOPENITEM.sql</script>
+    <script>1300-1057-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-1059-ALTER_TABLE_RI_TECHNICALACCOUNTS.sql</script>
+    <script>1300-1060-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-1060-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script>1300-1061-ALTER_TABLE_CSS_COMMRECORD.sql</script>
+    <script>1300-1136-UPDATE_TABLE_STST_SYSTEMPROPERTY.sql</script>
+    <script global-db="true">1300-1062-UPDATE_CDSE_THIRDSECTION.sql</script>
+    <script global-db="true">1300-1051-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1063-ALTER_TABLE_PROPERTY.sql</script>
+    <script global-db="true">1300-1125-ALTER_TABLE_CDSE_THIRDSECTION.sql</script>
+    <script global-db="true">1300-565-UPDATE_CDSE_THIRDSECTION.sql</script>
+    <script global-db="true">1300-568-UPDATE_CDSE_THIRDSECTION.sql</script>
+    <script>1300-1063-ALTER_TABLE_STAD_CONFIDLEVELCONTEXT.sql</script>
+    <script global-db="true">1300-1066-UPDATE_CDSE_THIRDSECTION.sql</script>
+    <script>1300-531-CREATE_TABLE_STPR_BATCHPROCESSPOLICYRI.sql</script>
+    <script global-db="true">1300-586-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-636-UPDATE_CDSE_MENUITEM.sql</script>
+    <script>1300-1135-CREATE_TABLE_STCA_DESTINATIONACCOUNT.sql</script>
+    <script global-db="true">1300-1137-INSERT_INTO_CDSE_MENU_ITEM_BANK_ACCOUNTS.sql</script>
+    <script>1300-1144-CREATE_TABLE_STRI_BRANCHGROUPING.sql</script>
+    <script client="LBC">1300-1065-ALTER_TABLE_EXT_POLICYPORTFOLIO.sql</script>
+    <script client="LBC">1300-1067-ALTER_TABLE_EXT_POLICYMOVEMENT.sql</script>
+    <script global-db="true">1300-1067-UPDATE-CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1055-ALTER_TABLE_CLAIMRESERVEBYCONCEPT.sql</script>
+    <script global-db="true">1300-1068-ALTER_TABLE_CDSE_GROUP.sql</script>
+    <script global-db="true">1300-1069-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script client="Alfa">1300-1070-ALTER_TABLE_EXT_RISKRESERVEALFA.sql</script>
+    <script>1300-589-ALTER_TABLE_STST_SYSTEMPROPERTY.sql</script>
+    <script>1300-1071-ALTER_TABLE_STPR_BATCHLOADDOCUMENTED.sql</script>
+    <script>1300-968-ALTER_STLI_DOCUMENTLOAN.sql</script>
+    <script warn="true" client="Interseguro">1300-969-ALTER_INT_AUX.sql</script>
+    <script warn="true" client="Interseguro">1300-971-CREATE_EXT_LOG_COTIZADOR.sql</script>
+    <script global-db="true">1300-1072-UPDATE_TABLE_CDSE_MENUITEM.sql</script>
+    <script>1300-1069-ALTER_TABLE_RI_REINSURANCECONTRACT.sql</script>
+    <script>1300-1070-CREATE_TABLE_STAD_RECEIPTCONTEXT.sql</script>
+    <script>1300-1071-ALTER_TABLE_CREATE_INDEX_TABLA_STPR_MASSIVEDETAILVALUE.sql</script>
+    <script>1300-1078-ALTER_TABLE_CREATE_INDEX_TABLA_STPR_MASSIVELEVELVALUE.sql</script>
+    <script>1300-1079-DELETE_SYSTEMPROPERTY.sql</script>
+    <script>1300-1080-ALTER_TABLE_STPR_MASSIVELEVELVALUE.sql</script>
+    <script>1300-1074-ALTER_TABLE_RI_REINSURANCECONTRACT.sql</script>
+    <script global-db="true">1300-1073-INSERT_INTO_CDSE_MENUITEM.sql</script>
+    <script global-db="true">1300-1138-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-1139-INSERT_INTO_CDSE_MENU.sql</script>
+    <script>1300-587-ALTER_TABLE_OPENITEMREFERENCE.sql</script>
+    <script warn="true" client="Axa">1300-1068-CREATE_TABLE_EXT_CUENTA_CORRIENTE.sql</script>
+    <script warn="true" client="Axa">1300-1069-INSERT_TABLE_EXT_CUENTA_CORRIENTE.sql</script>
+    <script>1300-1090-CREATE_TABLE_FACTURAMANUAL.sql</script>
+    <script>1300-1081-CREATE_INDEX_STPR_MASSHEADERFILE.sql</script>
+    <script>1300-1083-INSERT_TABLE_ENTRYOP.sql</script>
+    <script>1300-1084-CREATE_TABLE_BATCHPROCESS_SEND_SAP.sql</script>
+    <script>1300-1085_INSERT_ENTRYOP.sql</script>
+    <script>1300-1088-ALTER_TABLE_CREATE_INDEX_TABLA_STPR_MASSHEADERFILE.sql</script>
+    <script global-db="true">1300-1077-ALTER_TABLE_CDSE_USERACCESSLOG.sql</script>
+    <script global-db="true">1300-1086-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1094-ALTER_TABLE_ACTIVITY.sql</script>
+    <script>1300-1069-ALTER_TABLE_STNO_NOTIFICATIONCONF.sql</script>
+    <script>1300-1070-CREATE_TABLE_STNO_NOTIFICATIONALERTCONF.sql</script>
+    <script>1300-1095-CREATE_TABLE_STAD_CUMULUSWEBSERVCONTEXT.sql</script>
+    <script>1300-1109-ALTER_TABLE_CLAIM.sql</script>
+    <script>1300-1119-ALTER_TABLE_STCL_STATE.sql</script>
+    <script>1300-1071-CREATE_TABLE_STNO_NOTIFICATIONALERT.sql</script>
+    <script>1300-1095-ALTER_TABLE_STNO_NOTIFICATION.sql</script>
+    <script global-db="true">1300-1075-ALTER_TABLE_CDTR_TRANSFORMERTRANSLATION.sql</script>
+    <script global-db="true">1300-1076-ALTER_TABLE_CDTR_PROPERTYTRANSLATION.sql</script>
+    <script>1300-1101-CREATE_TABLE_STNO_NOTIFICATIONRELATION.sql</script>
+    <script>1300-1096-ALTER_TABLE_EVENTTYPE.sql</script>
+    <script global-db="true">1300-1097-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1087-INSERT_TABLE_ENTRYOP.sql</script>
+    <script>1300-1098-ALTER_TABLE_STPT_PRODUCTVALIDITY.sql</script>
+    <script global-db="true">1300-1099-ALTER_TABLE_CDTR_TRANSFORMERTRANSLATION.sql</script>
+    <script global-db="true">1300-1100-ALTER_TABLE_CDTR_TRANSFORMERTRANSLATION.sql</script>
+    <script global-db="true">1300-1123-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1103-ALTER_TABLE_STCL_RECOVERYDETAIL.sql</script>
+    <script>1300-1095-ALTER_TABLE_STPO_SURCHARGESDCO.sql</script>
+    <script>1300-1145-ALTER_TABLE_STCL_CLAIMDOCUMENTS.sql</script>
+    <script client="Asesuisa">1300-1108-CREATE_TABLE_EXT_SURATARIFICADOROPERATION.sql</script>
+    <script>1300-1089_INSERT_ENTRYOP.sql</script>
+    <script>1300-1091-ALTER_TABLE_STNO_NOTIFICATIONCONF.sql</script>
+    <script>1300-1111-CREATE_TABLE_STCA_ROLEDEDUCTIONS.sql</script>
+    <script>1300-1115-CREATE_TABLE_STPR_BATCHPROCETHIRDARREARS.sql</script>
+    <script global-db="true">1300-1112-INSERT_MENU_DEDUCTION.sql</script>
+    <script>1300-1091-ALTER_TABLE_CREATE_INDEX_TABLA_STPO_SURCHARGESDCO.sql</script>
+    <script>1300-1092-ALTER_TABLE_CREATE_INDEX_TABLA_STTE_CREDITLINE.sql</script>
+    <script global-db="true">1300-1090-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1116-ALTER_TABLE_STCL_RECOVERY.sql</script>
+    <script global-db="true">1300-116-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1146-ALTER_TABLE_STNO_NOTIFICATIONCONF.sql</script>
+    <script>1300-1102-CREATE_TABLE_STPR_BATCHALERTNOTIFICATION.sql</script>
+    <script global-db="true">1300-1154-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1155-ALTER_TABLE_RI_REINSURANCECONTRACT.sql</script>
+    <script global-db="true">1300-1159-UPDATE_CDSE_MENU.sql</script>
+    <script global-db="true">1300-1158-INSERT_INTO_CDSE_MENUITEM.sql</script>
+    <script>1300-1107-ALTER_TABLE_STNO_NOTIFICATIONCONF.sql</script>
+    <script>1300-1113-CREATE_TABLE_STPO_RESERVESEQUENCE.sql</script>
+    <script global-db="true">1300-1093-INSERT_INTO_CDSE_MENUITEM_PROPERTIES_EDITOR.sql</script>
+    <script global-db="true">1300-1163-INSERT_CDSE_MENUITEM.sql</script>
+    <script global-db="true">1300-1164-INSERT-CDTR_PROPERTYTRANSLATION.sql</script>
+    <script>1300-1160-ALTER_TABLE_STAD_AUDITTRAIL.sql</script>
+    <script global-db="true">1300-1161-ALTER_TABLE_STAD_AUDITTRAIL.sql</script>
+    <script>1300-1140-ALTER_TABLE_COLLECTAMOUNT.sql</script>
+    <script>1300-1166-ALTER_TABLE_STPS_MASSPRODUCTVALIDATION.sql</script>
+    <script global-db="true">1300-1165-INSERT_CDSE_MENUITEM.sql</script>
+    <script global-db="true">1300-1167-UPDATE_CDSE_MENUITEM.sql</script>
+    <script global-db="true">1300-1120-INSERT_INTO_CDSE_MENUITEM.sql</script>
+    <script>1300-1150-CREATE_TABLE_STRP_LIQDOCUMENTCONF.sql</script>
+    <script>1300-1152-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-1154-CREATE_TABLE_STPR_BATCHPROCESSPOLICYLIFE.sql</script>
+    <script global-db="true">1300-540-DELETE_ACL_INCONSISTENTS.sql</script>
+    <script>1300-1113-ALTER_TABLE_STST_SYSTEMPROPERTY.sql</script>
+    <script global-db="true">1300-1070-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1114-ALTER_TABLE_PROPERTYVALIDATIONS.sql</script>
+    <script client="Interseguro">1300-1156-INSERT_STJS_APPOINTMENT.sql</script>
+    <script>1300-1168_INSERT_ENTRYOP.sql</script>
+    <script>1300-1172-ALTER_TABLE_STPR_MASSCONFSECTION.sql</script>
+    <script>1300-1170-CREATE_TABLE_STPR_BATCHAMORTIZATPREMIUM.sql</script>
+    <script>1300-1153-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script client="Alfa">1300-1156-ALTER_TABLE_CTRINT_CONFIRENTRY.sql</script>
+    <script>1300-1168-CREATE_TABLE_STCA_RECEIPTTYPE.sql</script>
+    <script>1300-1177-ALTER_TABLE_STCA_RECEIPTDOSAGE.sql</script>
+    <script>1300-1178-ALTER_TABLE_STCA_RECEIPTINFORMATION.sql</script>
+    <script global-db="true">1300-1169-INSERT_CDSE_MENUITEM.sql</script>
+    <script global-db="true">1300-062-DELETE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-062-DELETE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-063_DELETE_STST_SYSTEMPROPERTY.sql</script>
+    <script global-db="true">1300-1118-INSERT_TABLE_MESSAGETRANSLATION.sql</script>
+    <script>1300-1105-CREATE_TABLE_STRI_STOPLOSSPROVISION.sql</script>
+    <script>1300-1093-INSERT_TABLE_ENTRYOP.sql</script>
+    <script>1300-1185-CREATE_TABLE_STCL_CLAIMINVOICEREFUND.sql</script>
+    <script>1300-1118-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script>1300-1118-ALTER_TABLE_STPR_MASSIVECONFIGURATION.sql</script>
+    <script>1300-1180-ALTER_TABLE_STCA_RECEIPTINFORMATION.sql</script>
+    <script>1300-1179-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-1187-ALTER_TABLE_STCA_RECEIPTINFORMATION.sql</script>
+    <script>1300-1190-ALTER_TABLE_REINSURANCEOPERATIONDETAIL.sql</script>
+    <script>1300-1192-CREATE_TABLE_STAD_REINSURANCECONTEXT.sql</script>
+    <script>1300-1191-CREATE_TABLE_STTE_PRELIQUIDATIONDOCUMENT.sql</script>
+    <script>1300-1064-ALTER_TABLE_STCL_RECOVERY.sql</script>
+    <script warn="true" client="Interseguro">1400-100-ALTER_TABLE_ST_CREATECHACC_RI_TECHACC_IOGENERATED.sql</script>
+    <script client="Asesuisa">1300-1189-CREATE_TABLE_EXT_ASESUISADOSAGEEXTERNAL.sql</script>
+    <script warn="true" client="Interseguro">1400-101-ALTER_OI_SAMP_OBJECT_LIQ.sql</script>
+    <script warn="true" client="Interseguro">1400-102-ALTER_INT_AUX.sql</script>
+    <script warn="true" global-db="true" client="Interseguro">1400-103-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1092-ALTER_TABLE_COLLECTAMOUNT.sql</script>
+    <script>1300-1176-CREATE_TABLE_STIN_HIERARCHY.sql</script>
+    <script>1300-1179-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script global-db="true">1300-1179-UPDATE_CDSE_MENUITEM.sql</script>
+    <script>1300-1187-ALTER_TABLE_STAD_CASHIERCONTEXT.sql</script>
+    <script>1300-1188-ALTER_TABLE_STAD_JOBCONTEXT.sql</script>
+    <script global-db="true">1300-1087-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1151-ALTER_TABLE_STPO_POLICYPARTICIPATION.sql</script>
+    <script>1300-1181-ALTER_TABLE_STCA_RECEIPTTYPE.sql</script>
+    <script global-db="true" client="Interseguro">1300-2105-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1182-CREATE_TABLE_STCA_DOCTYPERECEIPT.sql</script>
+    <script>1300-1186-ALTER_TABLE_STAD_CLAIMCONTEXT.sql</script>
+    <script>1300-1190-ALTER_STPR_BATCHPROCETHIRDARREARS.sql</script>
+    <script global-db="true">1300-1200-INSERT_CDSE_MENUITEM.sql</script>
+    <script client="Asesuisa">1300-2108-CREATE_TABLE_EXT_BATCHPROCECARDDEACTIVA.sql</script>
+    <script client="Asesuisa">1300-2111-CREATE_TABLE_EXT_EXPIREDCARDS.sql</script>
+    <script>1300-2112-CREATE_TABLE_STPR_BATCHSENDCLAIMCOMMUN.sql</script>
+    <script>1300-1195-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script>1300-2109-ALTER_TABLE_PAYMENTORDER.sql</script>
+    <script>1300-2115-ALTER_TABLE_PRODUCTPROPERTY.sql</script>
+    <script>1300-2106-CREATE_TABLE_STAD_UAAOICONTEXT.sql</script>
+    <script>1300-2122-ALTER_TABLE_PAYMENTORDER.sql</script>
+    <script>1300-1120-ALTER_TABLE_STPS_MASSPRODUCTVALIDATION.sql</script>
+    <script>1300-1193-CREATE_TABLE_STNO_NOTIFICATIONIMAGE.sql</script>
+    <script>1300-1173-ALTER_TABLE_CTRINT_ACCOUNTENTRY.sql</script>
+    <script>1300-1174-CREATE_TABLE_STPR_BATCHRISKRESERVERURAL.sql</script>
+    <script>1300-1175-CREATE_TABLE_EXT_RISKRESERVERURAL.sql</script>
+    <script>1300-1194-CREATE_TABLE_STCA_PREFERREDACCOUNT.sql</script>
+    <script global-db="true">1300-1195-INSERT_INTO_CDSE_MENUITEM.sql</script>
+    <script>1300-1196-ALTER_TABLE_COLLECTAMOUNT.sql</script>
+    <script>1300-1157-ALTER_TABLE_STRP_INCURREDCLAIM.sql</script>
+    <script warn="true">1300-2125-UPDATE_TABLE_STRP_INCURREDCLAIM.sql</script>
+    <script>1300-2127-ALTER_TABLE_STPO_SURCHARGESDCO.sql</script>
+    <script>1300-2128-ALTER_TABLE_STJS_APPOINTMENT.sql</script>
+    <script>1300-2107-ALTER_TABLE_STPS_CLAIMCOVCONFIGURATION.sql</script>
+    <script global-db="true">1300-1184-INSERT_INTO_CDSE_MENU.sql</script>
+    <script global-db="true">1300-2132-INSERT_INTO_CDSE_MENUITEM.sql</script>
+    <script>1300-2127-CREATE_TABLE_STCA_REVERSEREASON.sql</script>
+    <script warn="true" global-db="true" client="Interseguro">1300-2129-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-2130-ALTER_TABLE_STCA_OPENITEMLIQINFO.sql</script>
+    <script>1300-2124-ALTER_TABLE_STRI_MINPREMIUMDEPOSIT.sql</script>
+    <script global-db="true">1300-2125-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script global-db="true">1300-2126-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-2131-ALTER_STPR_BATCHAMORTIZATPREMIUM.sql</script>
+    <script>1300-2104-CREATE_TABLE_EXT_PRODUCTPORTFOLIO.sql</script>
+    <script global-db="true">1300-2140-INSERT_MENUITEM_CDSE_MENUITEM.sql</script>
+    <script global-db="true">1300-1201-INSERT_CDSE_MENUITEM.sql</script>
+    <script>1300-1202-CREATE_TABLE_STLI_FUNDACCOUNT.sql</script>
+    <script>1300-1203-ALTER_TABLE_STCA_RECEIPTTYPE.sql</script>
+    <script global-db="true">1300-1204-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script warn="true" client="Asesuisa">1300-1191-CREATE_TABLE_EXT_REPORTENTRYTOSISE.sql</script>
+    <script>1300-2116-CREATE_TABLE_STCA_RECEIPTANNULREASON.sql</script>
+    <script>1300-2117-ALTER_TABLE_STCA_RECEIPTINFORMATION.sql</script>
+    <script global-db="true">1300-2132-INSERT_INTO_CDSE_MENUITEM.sql</script>
+    <script>1300-2145-ALTER_TABLE_STPS_MASSPRODUCTVALIDATION.sql</script>
+    <script global-db="true">1300-2146-UPDATE_MESSAGETRANSLATION_quote_message.sql</script>
+    <script global-db="true">1300-2146-DROP_CONSTRAIN_FK_ASC_GRP.sql</script>
+    <script global-db="true">1300-2117-INSERT_INTO_CDSE_MENUITEM.sql</script>
+    <script global-db="true">1300-2149-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-2147-ALTER_TABLE_COLLECTOPERATION.sql</script>
+    <script global-db="true">1300-2152-UPDATE_CDSE_MENUITEM.sql</script>
+    <script>1300-2128-INSERT_ENTRYOP.sql</script>
+    <script>1300-2148-ALTER_TABLE_ENTRYRELATION.sql</script>
+    <script global-db="true">1300-2163-UPDATE_CDSE_MENUITEM.sql</script>
+    <script>1300-2164-CREATE_TABLE_STPR_BATCHPASTRRCRURAL.sql</script>
+    <script>1300-2165-INSERT_ENTRYGROUP.sql</script>
+    <script>1300-1217-ALTER_TABLE_STNO_NOTIFICACION.sql</script>
+    <script>1300-2173-ALTER_TABLE_OPENITEMREFERENCE.sql</script>
+    <script>1300-2169-CREATE_TABLE_EXT_REPORTPAYUPDATESISE.sql</script>
+    <script>1300-2170-ALTER_TABLE_STLI_DOCLOANOPENITEM.sql</script>
+    <script warn="true" client="Asesuisa">1300-2155-CREATE_TABLE_EXT_CONFIGASESUISA.sql</script>
+    <script warn="true" client="Asesuisa">1300-2154-CREATE_TABLE_EXT_APPLYEVENTPOLICY.sql</script>
+	<script>1300-2171-ALTER_TABLE_STLI_FUNDTYPE.sql</script>
+	<script>1300-1205-UPDATE_TABLE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script warn="true" client="Asesuisa">1300-2174-CREATE_TABLE_EXT_APPLYEVENTPOLICYBASICOV.sql</script>
+    <script warn="true" client="Asesuisa">1300-2175-INSERT_EXT_CONFIGASESUISA.sql</script>
+    <script>1300-2172-CREATE_TABLE_STLI_FUNDTYPEACCOUNT.sql</script>
+    <script>1300-2167-ALTER_TABLE_EXT_RISKRESERVEALFA.sql</script>
+    <script warn="true">1300-1206-ALTER_TABLE_LOGINT_CONFIRENTRY.sql</script>
+    <script warn="true">1300-1207-ALTER_TABLE_CTRINT_CONFIRENTRY.sql</script>
+    <script global-db="true">1300-2155-UPDATE_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-1208-ALTER_TABLE_CONFIGURATEDFUND.sql</script>
+    <script>1300-2176-ALTER_TABLE_STAD_REINSURANCECONTEXT.sql</script>
+    <script global-db="true">1300-2166-INSERT_CDTR_MESSAGETRANSLATION.sql</script>
+    <script>1300-2182-ALTER_TABLE_STPR_LETTERPARAMETER.sql</script>
+    <script>1300-2129-CREATE_TABLE_STPS_CLAIMCOVPAYMENTROLE.sql</script>
+    <script>1300-2180-ALTER_TABLE_STPS_CLAIMCOVPAYMENTROLE.sql</script>
+	<script>1300-2183-ALTER_TABLE_EXT_RISKRESERVEALFA.sql</script>
+    <script>1300-2187-ALTER_TABLE_EXT_RISKRESERVEALFA.sql</script>
+    <script warn="true" client="Asesuisa">1300-2178-INSERT_EXT_CONFIGASESUISA.sql</script>
+    <script>1300-1210-CREATE_TABLE_STMA_LIQVALIDATIONCONF.sql</script>
+    <script warn="true" client="Asesuisa">1300-2176-ALTER_TABLE_EXT_SURATARIFICADOROPERATION.sql</script>
+    <script warn="true" client="Asesuisa">1300-2177-INSERT_EXT_CONFIGASESUISA.sql</script>
+    <script global-db="true">1300-2190-UPDATE_CDSE_CDTR_MESSAGETRANSLATION_RIMAC.sql</script>
+    <script>1300-628-ALTER_TABLE_STPS_LIFERESERVECONFFORPLAN.sql</script>
+    <script warn="true">1300-2200-ALTER_TABLE_CREATE_INDEX_STAD_AUDITTRAIL.sql</script>
+    <script>1300-1214-ALTER_TABLE_STMA_LIQVALIDATIONCONF.sql</script>
+    <script global-db="true">1300-2131-UPDATE_TABLE_MESSAGETRANSLATION.sql</script>
+    <script>1300-2194-ALTER_TABLE_STCA_CASHRECEIPTINFORMATION.sql</script>
+    <script global-db="true">1300-2195-INSERT_INTO_CDSE_MENUITEM.sql</script>
+    <script>1300-2201-ALTER_TABLE_STPR_BATCHRESERVEADJUSTMENT.sql</script>
+    <script>1300-2206-CREATE_TABLE_STAD_PRODUCTCONTEXT.sql</script>
+    <script>1300-1208-ALTER_TABLE_CONFIGURATEDFUND.sql</script>
+    <script warn="true" client="Asesuisa">1300-2196-INSERT_EXT_CONFIGASESUISA.sql</script>
+    <script warn="true" client="Rimac">1300-2211-DECLARE_CURSOR_TABLE_PROPERTYUAADETAIL.sql</script>
+    <script warn="true" client="Asesuisa">1300-2205-CREATE_TABLE_EXT_REPORTCLAIM.sql</script>
+    <script warn="true" client="Interseguro">1300-985-CREATE_EXT_CRMCASE.sql</script>
+    <script warn="true" client="Interseguro">1300-986-CREATE_EXT_LOGCRMCASE.sql</script>
+    <script warn="true" client="Interseguro">1300-987-CREATE_EXT_CRMOPENITEM.sql</script>
+</scripts>
+

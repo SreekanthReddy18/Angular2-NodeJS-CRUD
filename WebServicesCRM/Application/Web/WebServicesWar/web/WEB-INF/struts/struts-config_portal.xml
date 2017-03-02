@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!--
+     This is the Struts configuration file for the example application,
+     using the proposed new syntax.
+     NOTE:  You would only flesh out the details in the "form-bean"
+     declarations if you had     a generator tool that used them to create
+     the corresponding Java classes for you.  Otherwise, you would
+     need only the "form-bean" element itself, with the corresponding
+     "name" and "type" attributes.
+-->
+<struts-config>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans></form-beans>
+    <!-- ========== Global Forward Definitions ============================== -->
+    <!-- ========== Action Mapping Definitions ============================== -->
+    <action-mappings type="org.apache.struts.action.ActionMapping">
+        <action path="/portal/authenticate"
+                type="com.consisint.acsele.portal.services.actions.AuthenticateAction">
+        </action>
+        <action path="/portal/clientPolicies"
+                type="com.consisint.acsele.portal.services.actions.ClientPoliciesAction">
+        </action>
+        <action path="/portal/agentPolicies"
+                type="com.consisint.acsele.portal.services.actions.AgentPoliciesAction">
+        </action>
+        <action path="/portal/listPendingComissions"
+                type="com.consisint.acsele.portal.services.actions.ListComissionsAction">
+        </action>
+
+        <action path="/portal/listComissions"
+                type="com.consisint.acsele.portal.services.actions.ListComissionsAction">
+        </action>
+
+        <action path="/portal/listPolicyCoverages"
+                type="com.consisint.acsele.portal.services.actions.ListPolicyCoveragesAction">
+        </action>
+
+        <action path="/portal/riskUnitDetail"
+                type="com.consisint.acsele.portal.services.actions.RiskUnitDetailAction">
+        </action>
+
+        <action path="/portal/listPolicyRiskUnits"
+                type="com.consisint.acsele.portal.services.actions.ListPolicyRiskUnitsAction">
+        </action>
+
+        <action path="/portal/claimPaymentList"
+                type="com.consisint.acsele.portal.services.actions.ClaimPaymentListAction">
+        </action>
+
+        <action path="/portal/listPolicyMovements"
+                type="com.consisint.acsele.portal.services.actions.ListPolicyMovementsAction">
+        </action>
+        <action path="/portal/changePassword"
+                type="com.consisint.acsele.portal.services.actions.ChangePasswordAction">
+        </action>
+        <action path="/portal/listPendingPremium"
+                type="com.consisint.acsele.portal.services.actions.ListPendingPremiumAction">
+        </action>
+        <action path="/portal/clientClaims"
+                type="com.consisint.acsele.portal.services.actions.ListClientClaimsAction"/>
+
+        <action path="/portal/retrieveGeoData"
+                type="com.consisint.acsele.portal.services.actions.RetrieveGeoLocalizationAction"/>
+
+        <action path="/portal/agentClaims"
+                type="com.consisint.acsele.portal.services.actions.ListAgentClaimsAction">
+        </action>
+        <action path="/portal/sendLetterClaim"
+                type="com.consisint.acsele.portal.services.actions.SendLetterClaimAction">
+        </action>
+        <action path="/portal/fetchLetter"
+                type="com.consisint.acsele.portal.services.actions.FetchLetter">
+        </action>
+        <action path="/portal/fetchQuotationDocument"
+                type="com.consisint.acsele.portal.services.actions.FetchQuotationDocument">
+        </action>
+        <action path="/portal/sendQuotation"
+                type="com.consisint.acsele.portal.services.actions.SendLetterClaimAction">
+        </action>
+        <action path="/portal/consolidatedAgentClaims"
+                type="com.consisint.acsele.portal.services.actions.ListConsolidatedAgentClaimsAction">
+        </action>
+        <action path="/portal/claimDetail"
+                type="com.consisint.acsele.portal.services.actions.ClaimDetailsAction">
+        </action>
+        <action path="/portal/financing"
+                type="com.consisint.acsele.portal.services.actions.FinancingAction">
+        </action>
+        <action path="/portal/branchCoverages"
+                type="com.consisint.acsele.portal.services.actions.BranchCoveragesListAction">
+        </action>
+        <action path="/portal/listQuotes"
+                type="com.consisint.acsele.portal.services.actions.ListQuotesAction">
+        </action>
+        <action path="/portal/fetchRegions"
+                type="com.consisint.acsele.portal.services.actions.FetchRegionsAction">
+        </action>
+        <action path="/portal/retrieveInitialClaimNoti"
+                type="com.consisint.acsele.portal.services.actions.RetrieveInitialClaimNotiAction">
+        </action>
+        <action path="/portal/claim/requestClaimNotification"
+                type="com.consisint.acsele.portal.services.actions.RequestClaimNotificationAction">
+        </action>
+        <action path="/portal/policy"
+                type="com.consisint.acsele.portal.services.actions.policy.ViewDetailPolicyAction">
+        </action>
+        <action path="/portal/busquedaPoliza"
+                type="com.consisint.acsele.portal.services.actions.policy.SearchPolicyAction">
+        </action>
+        <action path="/collections/cargaMasivaDevoluciones"
+                type="com.consisint.acsele.client.lbc.interfaces.actions.massivebancosol.MassiveBancoSolAction">
+        </action>
+        <action path="/portal/claim/searchPolicies"
+                type="com.consisint.acsele.portal.services.actions.ClaimPolicySearchAction">
+        </action>
+
+        <action path="/claim/consultaReservaCobertura"
+                type="com.consisint.acsele.portal.services.actions.claim.ViewCoverageReserveAction">
+        </action>
+
+        <action path="/claim/cambiarSiniestro"
+                type="com.consisint.acsele.portal.services.actions.claim.ChangeClaimStateAction">
+        </action>
+        <action path="/claim/busquedaSiniestro"
+                type="com.consisint.acsele.portal.services.actions.claim.SearchClaimAction">
+        </action>
+        <action path="/claim/modificarReserva"
+                type="com.consisint.acsele.portal.services.actions.claim.ModifyClaimReserveAction">
+        </action>
+        <action path="/claim/anulaPago"
+                type="com.consisint.acsele.portal.services.actions.claim.AnnulPayAction">
+        </action>
+        <action path="/portal/requestGlobalDetailEmail"
+                type="com.consisint.acsele.portal.services.actions.RequestGlobalDetailEmailAction">
+        </action>
+        <action path="/claim/generarPago"
+                type="com.consisint.acsele.portal.services.actions.claim.GeneratePayAction">
+        </action>
+        <action path="/authenticate/crearToken"
+                type="com.consisint.acsele.portal.services.actions.authentication.CreateTokenAction">
+        </action>
+	    <action path="/tp/crearModPersonaNatural"
+               type="com.consisint.acsele.portal.services.actions.CreateUpdatePersonNatural">
+        </action>
+        <action path="/tp/crearModPersonaJuridica"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.CreateUpdatePersonLegal">
+        </action>
+        <action path="/tp/crearModRelacionTercero"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.AlterThirdpartyRelationAction">
+        </action>
+        <action path="/tp/actualizarMedioContacto"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.UpdateContactInfoAction">
+        </action>
+        <action path="/claim/registrarSiniestro"
+                type="com.consisint.acsele.portal.services.actions.claim.CreateClaimAction">
+        </action>
+        <action path="/tp/crearModDir"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.CreateAndModifyThirdPartyAddress">
+        </action>
+        <action path="/tp/actualizarDocumentoTercero"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.UpdateThirdPartyDocumentAction">
+        </action>
+        <action path="/tp/crearModRolTercero"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.CreateModifyRoleAction">
+        </action>
+        <action path="/tp/actualizarNombrePJuridica"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.UpdateLegalPersonNameAction">
+        </action>
+
+        <action path="/tp/incluirInstitucion"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.CreateUpdatePaymentModeT">
+        </action>
+        <action path="/tp/crearViaDependencia"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.CreateUpdateCollectorBranch">
+        </action>
+        <action path="/usuarios/autenticar"
+                type="com.interseguro.acsele.ws.services.actions.AuthenticateAction">
+        </action>
+        <action path="/portal/productsArea"
+                type="com.consisint.acsele.portal.services.actions.ProductsAreaAction">
+        </action>
+        <action path="/terceros/crearactualizartercero"
+                type="com.interseguro.acsele.ws.services.actions.CreateUpdateThirdPartyAction">
+        </action>
+        <action path="/terceros/cargarTercero"
+                type="com.interseguro.acsele.ws.services.actions.LoadThirdParty">
+        </action>
+        <action path="/terceros/consultarTerceros"
+                type="com.interseguro.acsele.ws.services.actions.SearchThirdParty">
+        </action>
+        <action path="/terceros/listarTerceros"
+                type="com.interseguro.acsele.ws.services.actions.ListThirdParty">
+        </action>
+        <action path="/terceros/listarRelaciones"
+                type="com.interseguro.acsele.ws.services.actions.ListRelations">
+        </action>
+        <action path="/terceros/consultarColectores"
+                type="com.interseguro.acsele.ws.services.actions.ListCollectors">
+        </action>
+        <action path="/productos/cargarProducto"
+                type="com.interseguro.acsele.ws.services.actions.LoadProduct">
+        </action>
+        <action path="/productos/cargarPoliza"
+                type="com.interseguro.acsele.ws.services.actions.LoadPolicy">
+        </action>
+        <action path="/productos/consultarPolizas"
+            type="com.interseguro.acsele.ws.services.actions.ListPolicies">
+        </action>
+        <action path="/productos/cargarUnidadRiesgo"
+                type="com.interseguro.acsele.ws.services.actions.LoadRiskUnit">
+        </action>
+        <action path="/productos/cargarObjetoAsegurado"
+                type="com.interseguro.acsele.ws.services.actions.LoadInsuredObject">
+        </action>
+        <action path="/productos/cargarCobertura"
+                type="com.interseguro.acsele.ws.services.actions.LoadCoverage">
+        </action>
+        <action path="/productos/cargarParticipacion"
+                type="com.interseguro.acsele.ws.services.actions.LoadParticipation">
+        </action>
+        <action path="/openItems/iopsamp/recibirInfoInter"
+                type="com.interseguro.acsele.ws.services.actions.ReceiveInfoInterAction">
+        </action>
+        <action path="/openItems/iopsamp/processEventInter"
+                type="com.interseguro.acsele.ws.services.actions.ProcessEventInterAction">
+        </action>
+        <action path="/tesoreria/crearactualizartasacambio"
+                type="com.interseguro.acsele.ws.services.actions.CreateUpdateCurrentRate">
+        </action>
+        <action path="/tesoreria/pagarChequeSiniestro"
+                type="com.interseguro.acsele.ws.services.actions.ClaimPaymentByCheck">
+        </action>
+        <action path="/productos/cargarPolizaMaestra"
+                type="com.interseguro.acsele.ws.services.actions.LoadAgreement">
+        </action>
+        <action path="/productos/cargarEventos"
+                type="com.interseguro.acsele.ws.services.actions.ListEvents">
+        </action>
+        <action path="/liquidacion/consultaOILiq"
+                type="com.interseguro.acsele.ws.services.actions.ConsultOpenItem">
+        </action>
+        <action path="/liquidacion/pagarOILiq"
+                type="com.interseguro.acsele.ws.services.actions.PayOpenItem">
+        </action>
+        <action path="/policy/busquedaDatosAseguradoVehiculo"
+                type="com.lbc.interfaces.actions.ConsultAutomotivePolicyAction">
+        </action>
+        <action path="/policy/busquedaDatosPoliza"
+                type="com.lbc.interfaces.actions.ConsultAutoPolicyVDAction">
+        </action>
+
+        <action path="/policy/emisionPoliza"
+                type="com.consisint.acsele.portal.services.actions.policy.PolicyEmissionAction">
+        </action>
+        <action path="/policy/RenovacionPolizaCertificadoIndiv"
+                type="com.consisint.acsele.portal.services.actions.PolicyRenewalCollectiveAction">
+        </action>
+        <action path="/policy/emisionGenericaPoliza"
+                type="com.consisint.acsele.portal.services.actions.GenericPolicyEmissionAction">
+        </action>
+        <action path="/policy/generateDatavlvg"
+                type="com.consisint.acsele.ws.services.policy.GenerateDataVLVGAction">
+        </action>
+        <action path="/policy/emisionPolizaCesantes"
+                type="com.consisint.acsele.portal.services.actions.CesantesPolicyEmissionAction">
+        </action>
+        <action path="/policy/GenerateDocumentPDF"
+                type="com.consisint.acsele.portal.services.actions.GenerateDocumentPDF">
+        </action>
+        <action path="/policy/modificacionRolesPoliza"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.RoleUpdateAction">
+        </action>
+
+        <action path="/openItems/DocumentosCobrarPagar"
+                type="com.consisint.acsele.portal.services.actions.openitem.SearchDebitNonDebitDocumentsAction">
+        </action>
+        <action path="/policy/consultaDocumentosPoliza"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.UpdateLegalPersonNameAction">
+        </action>
+        <action path="/policy/actualizarEstadoPoliza"
+                type="com.consisint.acsele.portal.services.actions.thirdparty.UpdateLegalPersonNameAction">
+        </action>
+        <action path="/policy/consultaValoresGarantizados"
+                type="com.consisint.acsele.ws.services.policy.GuaranteeValuesAction">
+        </action>
+        <action path="/terceros/creacionActualizacionTerceros"
+                type="com.lbc.interfaces.actions.CreateUpdateThirdPartyAction">
+        </action>
+        <action path="/policy/consultarDatosPolizas"
+                type="com.lbc.interfaces.actions.ConsultPolicyTransportAction">
+        </action>
+        <action path="/policy/validarProcesoBusquedaSiniestro"
+                type="com.consisint.acsele.portal.services.actions.claim.ClaimBSAction">
+        </action>
+        <action path="/claim/modificarSueldoPromedio"
+                type="com.consisint.acsele.portal.services.actions.claim.ModifyAverageAmount">
+        </action>
+        <action path="/terceros/consultaBasicaTerceros"
+                type="com.lbc.interfaces.actions.ConsultApsAction">
+        </action>
+        <action path="/terceros/consultaDetallesTerceros"
+                type="com.consisint.acsele.client.lbc.interfaces.actions.detailsthirdpartyservice.DetailsThirdPartyAction">
+        </action>
+        <action path="/claim/modificarSueldoPromedio"
+                type="com.consisint.acsele.portal.services.actions.claim.ModifyAverageAmount">
+        </action>
+        <action path="/claim/busquedaSiniestroLbc"
+                type="com.lbc.interfaces.actions.approvedpaymentsclaim.ApprovedPaymentsClaimAction">
+        </action>
+        <action path="/policy/actualizarUbicaciones"
+                 type="com.consisint.acsele.client.lbc.actions.segusig.georeferencing.DataUpdateGeoreferencingAction">
+        </action>
+
+        <action path="/policy/crearDeclaracionesTransporte"
+                type="com.lbc.interfaces.actions.GenerateStatementsTranspAction">
+        </action>
+        <action path="/policy/cargaMasivaPolizas"
+                type="com.consisint.acsele.client.lbc.interfaces.actions.ConsultAppConsesoWebService.ConsultAppConsesoAction">
+        </action>
+        <action path="/policy/busquedaPolizasMadres"
+                type="com.consisint.acsele.client.lbc.interfaces.actions.searchpolicies.SearchPoliciesAction">
+        </action>
+        <action path="/claim/crearActualizarUsuariosDependientes"
+                type="com.consisint.acsele.client.lbc.interfaces.actions.DataUpdateMainUsers.DataUpdateMainUsersAction">
+        </action>
+        <action path="/facturas/consultaFacturacionAPBancruz"
+                type="com.consisint.acsele.client.lbc.interfaces.actions.openitem.billing.apbancruz.BillingApbancruzAction">
+        </action>
+        <action path="/policy/updateAgency"
+                type="com.interseguro.acsele.ws.services.actions.UpdateAgencyPolicyAction">
+        </action>
+        <action path="/policy/crearPropuesta"
+                type="com.interseguro.acsele.ws.services.actions.GenerateProposalAction">
+        </action>
+        <action path="/policy/applyEvent"
+                type="com.interseguro.acsele.ws.services.actions.ApplyEventAction">
+        </action>
+        <action path="/policy/reapplyEvent"
+                type="com.interseguro.acsele.ws.services.actions.ReapplyEventAction">
+        </action>
+        <action path="/policy/evaluarFormula"
+                type="com.interseguro.acsele.ws.services.actions.EvaluatorFormulaAction">
+        </action>
+        <action path="/policy/generateEducacionGaranJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPEducacionGarantizadaAction">
+        </action>
+        <action path="/policy/generateEducacionGaranPlusJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPEducacionGarantizadaPlusAction">
+        </action>
+        <action path="/policy/generateVidaProtegidaJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPVidaProtegidaAction">
+        </action>
+        <action path="/policy/generateVidaTotalProtegidaJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPVidaTotalProtegidaAction">
+        </action>
+        <action path="/policy/generateTemporalJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPTemporalAction">
+        </action>
+        <action path="/policy/generateTemporalconDevolucJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPTemporalConDevolucionAction">
+        </action>
+        <action path="/policy/generateDotalSimpleJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPDotalSimpleAction">
+        </action>
+        <action path="/policy/generateSiempreSeguroJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPSiempreSeguroAction">
+        </action>
+        <action path="/policy/generateSeguroAccidentesJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPSeguroAccidentesAction">
+        </action>
+        <action path="/policy/generateVidaEnteraJP"
+                type="com.interseguro.acsele.ws.services.actions.GenerateJPVidaEnteraAction">
+        </action>
+        <action path="/policy/endosarPoliza"
+                type="com.consisint.acsele.portal.services.actions.policy.EndorsementPolicyAction">
+        </action>
+
+        <action path="/policy/cambiarPlan"
+                type="com.consisint.acsele.portal.services.actions.policy.ChangePlanPolicyAction">
+        </action>
+        <action path="/policy/InsertarTabla"
+                type="com.consisint.acsele.portal.services.actions.policy.InsertDynamicTableAction">
+        </action>
+        <action path="/claim/clientCrm"
+                type="com.assurant.celita.custservclaim.actions.ClientCrmAction">
+        </action>
+    </action-mappings>
+    <!-- ========== Message Resources Definitions =========================== -->
+    <!-- ========== Plug Ins Configuration ================================== -->
+</struts-config>

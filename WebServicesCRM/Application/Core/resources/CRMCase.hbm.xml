@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+
+<hibernate-mapping>
+    <class
+        name="com.consisint.acsele.interseguro.interfaces.crm.entity.CRMCase"
+        table="EXT_CRMCASE">
+        <id name="crmNumber" column="CRMNUMBER" unsaved-value="null">
+            <generator class="assigned"/>
+        </id>
+        <property name="policyId" column="POLICYID"/>
+        <property name="policyNumber" column="POLICYNUMBER"/>
+        <property name="mediumAnswer" column="MEDIUMANSWER"/>
+        <property name="status" column="STATUS"/>
+        <property name="associationType" column="ASSOCIATIONTYPE"/>
+        <property name="claimId" column="CLAIMID"/>
+        <property name="ccvId" column="CCVID"/>
+        <property name="hltId" column="HLT_ID"/>
+        <set name="crmOpenItems" table="EXT_CRMOPENITEM" lazy="false" inverse="true" cascade="all-delete-orphan">
+            <key column="CRMNUMBER"/>
+            <one-to-many class="com.consisint.acsele.interseguro.interfaces.crm.entity.CRMOpenItem" />
+        </set>
+    </class>
+
+</hibernate-mapping>
