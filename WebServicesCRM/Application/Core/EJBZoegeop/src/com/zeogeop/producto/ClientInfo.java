@@ -1,7 +1,7 @@
-package com.consisint.acsele;
+package com.zoegeop.producto;
 
-import com.consisint.acsele.util.AcseleConf;
-import com.consisint.acsele.util.StringUtil;
+import com.zoegeop.producto.util.AcseleConf;
+import com.zoegeop.producto.util.StringUtil;
 
 /**
  * Created by ext.dpalma on 04/02/2017.
