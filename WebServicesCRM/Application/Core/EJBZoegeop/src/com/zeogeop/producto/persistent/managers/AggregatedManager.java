@@ -33,9 +33,6 @@ import java.util.List;
  * Perform SQL-Operations as of SELECT, UPDATE and DELETE on the "aggregatedObject"-object instance
  * of the AggregateObject class.<p>
  * Title: AggregatedManager.java <br>
- * Copyright: (c) 2003 Consis International<br>
- * Company: Consis International<br>
- * @author Consis International (CON)
  */
 
 public abstract class AggregatedManager implements Serializable {
