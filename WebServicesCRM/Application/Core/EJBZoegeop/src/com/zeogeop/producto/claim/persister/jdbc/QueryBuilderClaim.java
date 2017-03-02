@@ -1,25 +1,25 @@
-package com.consisint.acsele.claim.persister.jdbc;
+package com.zoegeop.producto.claim.persister.jdbc;
 
-import com.consisint.acsele.AggregateObject;
-import com.consisint.acsele.ClientInfo;
-import com.consisint.acsele.Versionable;
-import com.consisint.acsele.claim.bean.ClaimSearchParameters;
-import com.consisint.acsele.claim.category.EnumTypeClaimSearch;
-import com.consisint.acsele.openapi.product.Product;
-import com.consisint.acsele.product.claimcause.api.ClaimEvent;
-import com.consisint.acsele.template.api.Template;
-import com.consisint.acsele.template.api.Transformer;
-import com.consisint.acsele.template.server.*;
-import com.consisint.acsele.uaa.api.RoleGroup;
-import com.consisint.acsele.uaa.api.RoleList;
-import com.consisint.acsele.util.*;
-import com.consisint.acsele.util.dbtranslator.DBTranslator;
-import com.consisint.acsele.util.dbtranslator.DBTranslatorFactory;
-import com.consisint.acsele.util.error.ApplicationException;
-import com.consisint.acsele.util.error.Severity;
-import com.consisint.acsele.util.logging.AcseleLogger;
-import com.consisint.acsele.template.api.Property;
-import com.consisint.acsele.template.api.TipoTransformerFunction;
+import com.zoegeop.producto.AggregateObject;
+import com.zoegeop.producto.ClientInfo;
+import com.zoegeop.producto.Versionable;
+import com.zoegeop.producto.claim.bean.ClaimSearchParameters;
+import com.zoegeop.producto.claim.category.EnumTypeClaimSearch;
+import com.zoegeop.producto.openapi.product.Product;
+import com.zoegeop.producto.product.claimcause.api.ClaimEvent;
+import com.zoegeop.producto.template.api.Template;
+import com.zoegeop.producto.template.api.Transformer;
+import com.zoegeop.producto.template.server.*;
+import com.zoegeop.producto.uaa.api.RoleGroup;
+import com.zoegeop.producto.uaa.api.RoleList;
+import com.zoegeop.producto.util.*;
+import com.zoegeop.producto.util.dbtranslator.DBTranslator;
+import com.zoegeop.producto.util.dbtranslator.DBTranslatorFactory;
+import com.zoegeop.producto.util.error.ApplicationException;
+import com.zoegeop.producto.util.error.Severity;
+import com.zoegeop.producto.util.logging.AcseleLogger;
+import com.zoegeop.producto.template.api.Property;
+import com.zoegeop.producto.template.api.TipoTransformerFunction;
 
 import java.util.*;
 
